@@ -1,0 +1,32 @@
+{
+  "name": "new-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon backend/server.js",
+    "server": "node backend/server.js",
+    "client": "cd frontend && npm start",
+    "dev:full": "concurrently \"npm run server\" \"npm run client\"",
+    "install:all": "npm install && cd frontend && npm install"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "@types/zxcvbn": "^4.4.5",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.16.0",
+    "react": "^19.1.0",
+    "react-hot-toast": "^2.5.2",
+    "zxcvbn": "^4.4.2"
+  }
+}
