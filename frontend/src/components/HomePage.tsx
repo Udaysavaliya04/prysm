@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 interface HomePageProps {
   onLogin: () => void;
@@ -6,8 +6,60 @@ interface HomePageProps {
 }
 
 const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    const animateElements = document.querySelectorAll('.animate-on-scroll');
+    animateElements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
   return (
     <div>
+      <style>{`
+        .animate-on-scroll {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 0.6s ease-out;
+        }
+        
+        .animate-on-scroll.animate-in {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+        .animate-on-scroll.delay-1 {
+          transition-delay: 0.1s;
+        }
+        
+        .animate-on-scroll.delay-2 {
+          transition-delay: 0.2s;
+        }
+        
+        .animate-on-scroll.delay-3 {
+          transition-delay: 0.3s;
+        }
+        
+        .feature-card.animate-on-scroll {
+          transform: translateY(20px) scale(0.95);
+        }
+        
+        .feature-card.animate-on-scroll.animate-in {
+          transform: translateY(0) scale(1);
+        }
+      `}</style>
+      
       {/* Nav */}
       <nav className="nav">
         <div className="nav-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none',
@@ -28,7 +80,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
       <section className="hero">
         <div className="container">
           <div className="hero-content">
-            <h1 style={{ 
+            <h1 className="animate-on-scroll" style={{ 
               background: 'linear-gradient(135deg, #ffffff 0%, #e9ecef 20%, #dee2e6 40%, #adb5bd 70%, #868e96 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -37,7 +89,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
             }}>
               Password and Access Management for Everyone.
             </h1>
-            <h2 style={{ 
+            <h2 className="animate-on-scroll delay-1" style={{ 
               paddingTop: '11px',
               background: 'linear-gradient(135deg, #ffffff 0%, #e8eaed 25%, #dadce0 50%, #adb5bd 75%, #868e96 100%)',
               WebkitBackgroundClip: 'text',
@@ -48,7 +100,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
             </h2>
             <p style={{ paddingTop: '11px' }}>
             </p>
-            <div className="hero-buttons">
+            <div className="hero-buttons animate-on-scroll delay-2">
               <button onClick={onSignUp} className="hero-btn hero-btn-primary">
                 Get Started
               </button>
@@ -64,7 +116,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
       <section id="features" className="features">
         <div className="container">
           <div className="header">
-            <h1 style={{ 
+            <h1 className="animate-on-scroll" style={{ 
               background: 'linear-gradient(135deg, #ffffff 0%, #e9ecef 20%, #dee2e6 40%, #adb5bd 70%, #868e96 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -76,7 +128,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
           </div>
           
           <div className="features-grid">
-            <div className="feature-card">
+            <div className="feature-card animate-on-scroll delay-1">
               <div className="feature-icon">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
@@ -98,7 +150,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
               </p>
             </div>
             
-            <div className="feature-card">
+            <div className="feature-card animate-on-scroll delay-2">
               <div className="feature-icon">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="3"></circle>
@@ -119,7 +171,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
               </p>
             </div>
             
-            <div className="feature-card">
+            <div className="feature-card animate-on-scroll delay-3">
               <div className="feature-icon">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"></polyline>
@@ -139,7 +191,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
               </p>
             </div>
             
-            <div className="feature-card">
+            <div className="feature-card animate-on-scroll delay-1">
               <div className="feature-icon">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="11" cy="11" r="8"></circle>
@@ -160,7 +212,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
               </p>
             </div>
             
-            <div className="feature-card">
+            <div className="feature-card animate-on-scroll delay-2">
               <div className="feature-icon">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
@@ -180,7 +232,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
               </p>
             </div>
             
-            <div className="feature-card">
+            <div className="feature-card animate-on-scroll delay-3">
               <div className="feature-icon">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
@@ -209,7 +261,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
       <section id="security" className="features" style={{ background: 'var(--bg-primary)' }}>
         <div className="container">
           <div className="header">
-            <h1 style={{ 
+            <h1 className="animate-on-scroll" style={{ 
               background: 'linear-gradient(135deg, #ffffff 0%, #e9ecef 20%, #dee2e6 40%, #adb5bd 70%, #868e96 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -221,7 +273,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
           </div>
           
           <div className="features-grid">
-            <div className="feature-card">
+            <div className="feature-card animate-on-scroll delay-1">
               <div className="feature-icon">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M15 7h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3"></path>
@@ -245,7 +297,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
               </p>
             </div>
             
-            <div className="feature-card">
+            <div className="feature-card animate-on-scroll delay-2">
               <div className="feature-icon">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -265,7 +317,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
               </p>
             </div>
             
-            <div className="feature-card">
+            <div className="feature-card animate-on-scroll delay-3">
               <div className="feature-icon">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
@@ -294,7 +346,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
       <section className="hero" style={{ padding: '80px 0' }}>
         <div className="container">
           <div className="hero-content">
-            <h1 style={{ 
+            <h1 className="animate-on-scroll" style={{ 
               background: 'linear-gradient(135deg, #ffffff 0%, #e9ecef 20%, #dee2e6 40%, #adb5bd 70%, #868e96 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -303,11 +355,11 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
             }}>
               Sleep easy. Prysm's got your back.
             </h1>
-            <p>
+            <p className="animate-on-scroll delay-1">
               Join thousands of users who trust Prysm with their sensitive data. 
               Get started in seconds, no registration required.
             </p>
-            <div className="hero-buttons">
+            <div className="hero-buttons animate-on-scroll delay-2">
               <button onClick={onSignUp} className="hero-btn hero-btn-primary">
                 Sign Up Now
               </button>
