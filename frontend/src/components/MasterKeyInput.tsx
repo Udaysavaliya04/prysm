@@ -49,9 +49,23 @@ const MasterKeySetup: React.FC<MasterKeySetupProps> = ({ onMasterKeySet }) => {
   };
 
   return (
-    <div className="card">
+    <div className="card" style={{
+      background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(233,236,239,0.02) 25%, rgba(222,226,230,0.01) 50%, rgba(173,181,189,0.02) 75%, rgba(134,142,150,0.03) 100%)',
+      backdropFilter: 'blur(10px)',
+      border: '1px solid rgba(255,255,255,0.1)'
+    }}>
       <div className="header">
-        <h2 style={{ textWrap: 'nowrap',fontSize: '2.5rem',fontWeight: 'bold',letterSpacing: '-0.02em',paddingBottom: '10px'}}>
+        <h2 style={{ 
+          textWrap: 'nowrap',
+          fontSize: '2.5rem',
+          fontWeight: 'bold',
+          letterSpacing: '-0.02em',
+          paddingBottom: '10px',
+          background: 'linear-gradient(135deg, #ffffff 0%, #e9ecef 20%, #dee2e6 40%, #adb5bd 70%, #868e96 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text'
+        }}>
           <svg 
             width="26" 
             height="26" 
@@ -167,7 +181,16 @@ const MasterKeySetup: React.FC<MasterKeySetupProps> = ({ onMasterKeySet }) => {
         border: '1px solid rgba(245, 158, 11, 0.3)', 
         borderRadius: '12px' 
       }}>
-        <h4 style={{ display: 'flex', alignItems: 'center', color: 'var(--accent-warning)', marginBottom: '8px' }}>
+        <h4 style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          color: 'var(--accent-warning)', 
+          marginBottom: '8px',
+          background: 'linear-gradient(135deg, #ffffff 0%, #e8eaed 25%, #dadce0 50%, #adb5bd 75%, #868e96 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text'
+        }}>
           <svg 
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg" 
@@ -185,7 +208,7 @@ const MasterKeySetup: React.FC<MasterKeySetupProps> = ({ onMasterKeySet }) => {
             <line x1="12" y1="9" x2="12" y2="13"></line>
             <line x1="12" y1="17" x2="12.01" y2="17"></line>
           </svg>
-          Important Security Note
+          Important Security Note:
         </h4>
         <ul style={{ margin: 0, paddingLeft: '20px', color: 'var(--text-secondary)' ,fontFamily:" 'fira code', 'Inter'",letterSpacing: '-0.01em',}}>
           <li>Your master key is never stored on our servers</li>

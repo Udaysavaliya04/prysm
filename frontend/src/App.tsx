@@ -162,7 +162,12 @@ function App(): JSX.Element {
         
         <div className="card">
           <div className="master-key-section">
-            <h3>
+            <h3 style={{ 
+              background: 'linear-gradient(135deg, #ffffff 0%, #e8eaed 25%, #dadce0 50%, #adb5bd 75%, #868e96 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline-block', marginRight: '8px', verticalAlign: 'middle' }}>
                 <path d="M15 7h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3"></path>
                 <path d="M10 12h4"></path>
@@ -172,13 +177,20 @@ function App(): JSX.Element {
               </svg>
               Master Key
             </h3>
-            <input
-              type="password"
-              value={masterKey}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMasterKey(e.target.value)}
-              placeholder="Enter your master key"
-              className="master-key-input"
-            />
+            <div className="master-key-display" style={{
+              padding: '12px',
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(233,236,239,0.02) 25%, rgba(222,226,230,0.01) 50%, rgba(173,181,189,0.02) 75%, rgba(134,142,150,0.03) 100%)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: '12px',
+              fontFamily: 'monospace',
+              fontSize: '14px',
+              color: 'var(--text-primary)',
+              wordBreak: 'break-all',
+              minHeight: '20px'
+            }}>
+              {masterKey}
+            </div>
             <p style={{ marginTop: '10px', fontSize: '14px', color: '#856404' }}>
               Keep this key safe! You'll need it to access your passwords.
             </p>
