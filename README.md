@@ -21,31 +21,27 @@ A modern, secure password manager built with the MERN stack, featuring military-
 ## Technology Stack
 
 ### Frontend
-- **React 18** - Modern React with hooks and functional components
-- **TypeScript** - Type-safe JavaScript for better development experience
-- **CSS3** - Custom styling with modern features (gradients, backdrop-filter)
-- **Axios** - HTTP client for API communication
+- **React 18** 
+- **TypeScript** 
+- **CSS3** 
+- **Axios**
 
 ### Backend
-- **Node.js** - JavaScript runtime environment
-- **Express.js** - Web application framework
-- **MongoDB** - NoSQL database for data persistence
-- **Mongoose** - MongoDB object modeling for Node.js
-- **Crypto** - Built-in Node.js encryption module
+- **Node.js** 
+- **Express.js**
+- **MongoDB** 
+- **Mongoose**
+- **Crypto**
 
 ## Project Structure
 
 ```
 prysm/
 ├── backend/
-│   ├── server.js           
-│   ├── package.json                   
+│   ├── server.js                             
 ├── frontend/
 │   ├── public/
-│   │   ├── index.html         
-│   │   ├── prysm-logo.ico
-│   │   ├── prysm-logo.png   
-│   │   └── key.svg     
+│   │   ├── index.html          
 │   ├── src/
 │   │   ├── components/
 │   │   │   ├── HomePage.tsx          
@@ -58,9 +54,7 @@ prysm/
 │   │   │   └── index.ts      
 │   │   ├── App.tsx         
 │   │   ├── index.tsx         
-│   │   └── index.css          
-│   ├── package.json         
-│   └── tsconfig.json    
+│   │   └── index.css            
 └── README.md               
 ```
 
@@ -77,11 +71,5 @@ prysm/
 - **Passwords**: Encrypted before database storage
 - **Transmission**: Encrypted data sent over HTTPS
 - **Validation**: Input sanitization and validation on all endpoints
-
-### Best Practices
-- **CORS Configuration**: Proper cross-origin resource sharing setup
-- **Error Handling**: Comprehensive error handling without data leakage
-- **Input Validation**: Server-side validation for all user inputs
-- **Session Management**: Stateless authentication with master key
 
 **Made with passion for security and modern web development**
