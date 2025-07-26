@@ -45,32 +45,30 @@ A modern, secure password manager built with the MERN stack, featuring military-
 ```
 prysm/
 ├── backend/
-│   ├── env.config              # Environment configuration
-│   ├── server.js              # Express server setup
-│   ├── package.json           # Backend dependencies
-│   └── node_modules/          # Backend dependencies
+│   ├── server.js           
+│   ├── package.json                   
 ├── frontend/
 │   ├── public/
-│   │   ├── index.html         # Main HTML file
-│   │   ├── prysm-logo.ico     # Favicon
-│   │   ├── prysm-logo.png     # Logo image
-│   │   └── key.svg            # Key icon
+│   │   ├── index.html         
+│   │   ├── prysm-logo.ico
+│   │   ├── prysm-logo.png   
+│   │   └── key.svg     
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── HomePage.tsx           # Landing page component
-│   │   │   ├── MasterKeySetup.tsx     # Master key setup form
-│   │   │   ├── MasterKeyLogin.tsx     # Master key login form
-│   │   │   ├── MasterKeyInput.tsx     # Master key input component
-│   │   │   ├── PasswordForm.tsx       # Password creation/editing form
-│   │   │   └── PasswordList.tsx       # Password display component
+│   │   │   ├── HomePage.tsx          
+│   │   │   ├── MasterKeySetup.tsx    
+│   │   │   ├── MasterKeyLogin.tsx    
+│   │   │   ├── MasterKeyInput.tsx    
+│   │   │   ├── PasswordForm.tsx      
+│   │   │   └── PasswordList.tsx     
 │   │   ├── types/
-│   │   │   └── index.ts       # TypeScript type definitions
-│   │   ├── App.tsx            # Main application component
-│   │   ├── index.tsx          # React application entry point
-│   │   └── index.css          # Global styles
-│   ├── package.json           # Frontend dependencies
-│   └── tsconfig.json         # TypeScript configuration
-└── README.md                 # Project documentation
+│   │   │   └── index.ts      
+│   │   ├── App.tsx         
+│   │   ├── index.tsx         
+│   │   └── index.css          
+│   ├── package.json         
+│   └── tsconfig.json    
+└── README.md               
 ```
 
 ## Security Features
