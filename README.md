@@ -12,13 +12,6 @@ A modern, secure password manager built with the MERN stack, featuring military-
 - **Password Generator**: Generate strong, random passwords
 - **Copy to Clipboard**: One-click copying of usernames, passwords, and URLs
 
-### User Interface
-- **Modern Design**: Dark-themed interface with gradient text effects
-- **Responsive Layout**: Works on desktop, tablet, and mobile devices
-- **Glass Effect Cards**: Modern frosted glass design with backdrop blur
-- **Scroll Animations**: Smooth animations when scrolling through content
-- **Password Visibility Toggle**: Show/hide passwords with eye icon
-
 ### Security
 - **Client-Side Encryption**: Passwords encrypted in browser before transmission
 - **No Server Storage**: Master key never stored on server
