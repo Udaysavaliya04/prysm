@@ -50,7 +50,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
             <h1 className="animate-on-scroll gradient-text-primary">
               Password and Access Management for Everyone.
             </h1>
-            <h2 className="animate-on-scroll delay-1 gradient-text-secondary homepage-hero-subtitle">
+            <h2 className="animate-on-scroll delay-1 gradient-text-secondary homepage-hero-subtitle" style={{paddingBottom: '30px'}}>
               Security so good, even you'll forget your password but we won't.
             </h2>
             <div className="hero-buttons animate-on-scroll delay-2">
