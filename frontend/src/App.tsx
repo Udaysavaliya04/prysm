@@ -15,8 +15,40 @@ function App(): JSX.Element {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [currentView, setCurrentView] = useState<'home' | 'setup' | 'login' | 'manager'>('home');
+  const [showScrollToTop, setShowScrollToTop] = useState<boolean>(false);
 
   const API_BASE_URL: string = 'http://localhost:5000/api';
+
+  // Scroll to top function
+  const scrollToTop = (): void => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  // Handle scroll events for scroll-to-top button
+  useEffect(() => {
+    const handleScroll = (): void => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      setShowScrollToTop(scrollTop > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Scroll to top on view changes
+  useEffect(() => {
+    scrollToTop();
+  }, [currentView]);
+
+  // Scroll to top when form opens/closes
+  useEffect(() => {
+    if (showForm) {
+      scrollToTop();
+    }
+  }, [showForm]);
 
   const fetchPasswords = useCallback(async (): Promise<void> => {
     if (!masterKey) return;
@@ -87,21 +119,25 @@ function App(): JSX.Element {
 
   const handleSignUp = (): void => {
     setCurrentView('setup');
+    scrollToTop();
   };
 
   const handleLogin = (): void => {
     setCurrentView('login');
+    scrollToTop();
   };
 
   const handleMasterKeySet = (key: string): void => {
     setMasterKey(key);
     setCurrentView('manager');
+    scrollToTop();
   };
 
   const handleLogout = (): void => {
     setCurrentView('home');
     setMasterKey('');
     setPasswords([]);
+    scrollToTop();
   };
 
   const filteredPasswords: Password[] = passwords.filter(password =>
@@ -118,13 +154,27 @@ function App(): JSX.Element {
 
   // Homepage view
   if (currentView === 'home') {
-    return <HomePage onLogin={handleLogin} onSignUp={handleSignUp} />;
+    return (
+      <div className="page-container">
+        <HomePage onLogin={handleLogin} onSignUp={handleSignUp} />
+        {/* Scroll to Top Button */}
+        <button 
+          className={`scroll-to-top ${showScrollToTop ? 'visible' : ''}`}
+          onClick={scrollToTop}
+          aria-label="Scroll to top"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m18 15-6-6-6 6"/>
+          </svg>
+        </button>
+      </div>
+    );
   }
 
   // Setup or Login view
   if (currentView === 'setup' || currentView === 'login') {
     return (
-      <div>
+      <div className="page-container">
         <nav className="nav">
           <div className="nav-container">
             <div className="nav-logo">
@@ -140,13 +190,24 @@ function App(): JSX.Element {
           {currentView === 'setup' && <MasterKeySetup onMasterKeySet={handleMasterKeySet} />}
           {currentView === 'login' && <MasterKeyLogin onMasterKeySet={handleMasterKeySet} />}
         </div>
+        
+        {/* Scroll to Top Button */}
+        <button 
+          className={`scroll-to-top ${showScrollToTop ? 'visible' : ''}`}
+          onClick={scrollToTop}
+          aria-label="Scroll to top"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m18 15-6-6-6 6"/>
+          </svg>
+        </button>
       </div>
     );
   }
 
   // main password manager view
   return (
-    <div>
+    <div className="page-container">
       <nav className="nav">
         <div className="nav-container">
           <div className="nav-logo">
@@ -245,6 +306,17 @@ function App(): JSX.Element {
           )
         )}
       </div>
+
+      {/* Scroll to Top Button */}
+      <button 
+        className={`scroll-to-top ${showScrollToTop ? 'visible' : ''}`}
+        onClick={scrollToTop}
+        aria-label="Scroll to top"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m18 15-6-6-6 6"/>
+        </svg>
+      </button>
     </div>
   );
 }

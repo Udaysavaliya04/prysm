@@ -25,52 +25,19 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
 
     return () => observer.disconnect();
   }, []);
+
   return (
     <div>
-      <style>{`
-        .animate-on-scroll {
-          opacity: 0;
-          transform: translateY(30px);
-          transition: all 0.6s ease-out;
-        }
-        
-        .animate-on-scroll.animate-in {
-          opacity: 1;
-          transform: translateY(0);
-        }
-        
-        .animate-on-scroll.delay-1 {
-          transition-delay: 0.1s;
-        }
-        
-        .animate-on-scroll.delay-2 {
-          transition-delay: 0.2s;
-        }
-        
-        .animate-on-scroll.delay-3 {
-          transition-delay: 0.3s;
-        }
-        
-        .feature-card.animate-on-scroll {
-          transform: translateY(20px) scale(0.95);
-        }
-        
-        .feature-card.animate-on-scroll.animate-in {
-          transform: translateY(0) scale(1);
-        }
-      `}</style>
-      
       {/* Nav */}
       <nav className="nav">
-        <div className="nav-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none',
-        }}>
+        <div className="nav-container homepage-nav-container">
           <div className="nav-logo">
-            <img src="/prysm-logo.png" alt="Prysm Logo" style={{ height: '47px', width: 'auto' }} />
+            <img src="/prysm-logo.png" alt="Prysm Logo" className="homepage-header-logo" />
           </div>
           <div className="nav-links">
             <a href="#features" className="nav-link">Features</a>
             <a href="#security" className="nav-link">Security</a>
-            <button onClick={onLogin} className="nav-btn-primary" style={{ background: 'none', border: '1px solid var(--border-color)', cursor: 'pointer' }}>Log In</button>
+            <button onClick={onLogin} className="nav-btn-secondary">Log In</button>
             <button onClick={onSignUp} className="nav-btn-primary">Sign Up</button>
           </div>
         </div>
@@ -80,26 +47,12 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
       <section className="hero">
         <div className="container">
           <div className="hero-content">
-            <h1 className="animate-on-scroll" style={{ 
-              background: 'linear-gradient(135deg, #ffffff 0%, #e9ecef 20%, #dee2e6 40%, #adb5bd 70%, #868e96 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              fontWeight: '700'
-            }}>
+            <h1 className="animate-on-scroll gradient-text-primary">
               Password and Access Management for Everyone.
             </h1>
-            <h2 className="animate-on-scroll delay-1" style={{ 
-              paddingTop: '11px',
-              background: 'linear-gradient(135deg, #ffffff 0%, #e8eaed 25%, #dadce0 50%, #adb5bd 75%, #868e96 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
-            }}>
+            <h2 className="animate-on-scroll delay-1 gradient-text-secondary homepage-hero-subtitle">
               Security so good, even you'll forget your password but we won't.
             </h2>
-            <p style={{ paddingTop: '11px' }}>
-            </p>
             <div className="hero-buttons animate-on-scroll delay-2">
               <button onClick={onSignUp} className="hero-btn hero-btn-primary">
                 Get Started
@@ -112,17 +65,11 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
         </div>
       </section>
 
-      {/* Featuress */}
+      {/* Features */}
       <section id="features" className="features">
         <div className="container">
           <div className="header">
-            <h1 className="animate-on-scroll" style={{ 
-              background: 'linear-gradient(135deg, #ffffff 0%, #e9ecef 20%, #dee2e6 40%, #adb5bd 70%, #868e96 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              fontWeight: '700'
-            }}>
+            <h1 className="animate-on-scroll gradient-text-primary">
               Take back control and secure what matters.
             </h1>
           </div>
@@ -136,12 +83,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
                   <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                 </svg>
               </div>
-              <h3 style={{ 
-                background: 'linear-gradient(135deg, #ffffff 0%, #e8eaed 25%, #dadce0 50%, #adb5bd 75%, #868e96 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}>
+              <h3 className="gradient-text-secondary">
                 Military-Grade Encryption
               </h3>
               <p>
@@ -157,12 +99,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
                   <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"></path>
                 </svg>
               </div>
-              <h3 style={{ 
-                background: 'linear-gradient(135deg, #ffffff 0%, #e8eaed 25%, #dadce0 50%, #adb5bd 75%, #868e96 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}>
+              <h3 className="gradient-text-secondary">
                 Beautiful Interface
               </h3>
               <p>
@@ -177,12 +114,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
                   <polyline points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"></polyline>
                 </svg>
               </div>
-              <h3 style={{ 
-                background: 'linear-gradient(135deg, #ffffff 0%, #e8eaed 25%, #dadce0 50%, #adb5bd 75%, #868e96 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}>
+              <h3 className="gradient-text-secondary">
                 Lightning Fast
               </h3>
               <p>
@@ -198,12 +130,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
                   <path d="m21 21-4.35-4.35"></path>
                 </svg>
               </div>
-              <h3 style={{ 
-                background: 'linear-gradient(135deg, #ffffff 0%, #e8eaed 25%, #dadce0 50%, #adb5bd 75%, #868e96 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}>
+              <h3 className="gradient-text-secondary">
                 Smart Search
               </h3>
               <p>
@@ -218,12 +145,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
                   <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
                 </svg>
               </div>
-              <h3 style={{ 
-                background: 'linear-gradient(135deg, #ffffff 0%, #e8eaed 25%, #dadce0 50%, #adb5bd 75%, #868e96 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}>
+              <h3 className="gradient-text-secondary">
                 Password Generator
               </h3>
               <p>
@@ -240,12 +162,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
                   <line x1="12" y1="17" x2="12" y2="21"></line>
                 </svg>
               </div>
-              <h3 style={{ 
-                background: 'linear-gradient(135deg, #ffffff 0%, #e8eaed 25%, #dadce0 50%, #adb5bd 75%, #868e96 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}>
+              <h3 className="gradient-text-secondary">
                 Cross-Platform
               </h3>
               <p>
@@ -258,16 +175,10 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
       </section>
 
       {/* Security */}
-      <section id="security" className="features" style={{ background: 'var(--bg-primary)' }}>
+      <section id="security" className="features homepage-security-section">
         <div className="container">
           <div className="header">
-            <h1 className="animate-on-scroll" style={{ 
-              background: 'linear-gradient(135deg, #ffffff 0%, #e9ecef 20%, #dee2e6 40%, #adb5bd 70%, #868e96 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              fontWeight: '700'
-            }}>
+            <h1 className="animate-on-scroll gradient-text-primary">
               Built for Security.
             </h1>
           </div>
@@ -283,12 +194,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
                   <path d="M7 7v10"></path>
                 </svg>
               </div>
-              <h3 style={{ 
-                background: 'linear-gradient(135deg, #ffffff 0%, #e8eaed 25%, #dadce0 50%, #adb5bd 75%, #868e96 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}>
+              <h3 className="gradient-text-secondary">
                 Master Key Protection
               </h3>
               <p>
@@ -303,12 +209,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                 </svg>
               </div>
-              <h3 style={{ 
-                background: 'linear-gradient(135deg, #ffffff 0%, #e8eaed 25%, #dadce0 50%, #adb5bd 75%, #868e96 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}>
+              <h3 className="gradient-text-secondary">
                 Client-Side Encryption
               </h3>
               <p>
@@ -325,12 +226,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
                   <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                 </svg>
               </div>
-              <h3 style={{ 
-                background: 'linear-gradient(135deg, #ffffff 0%, #e8eaed 25%, #dadce0 50%, #adb5bd 75%, #868e96 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}>
+              <h3 className="gradient-text-secondary">
                 Secure Storage
               </h3>
               <p>
@@ -343,16 +239,10 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
       </section>
 
       {/* Call to action */}
-      <section className="hero" style={{ padding: '80px 0' }}>
+      <section className="hero homepage-cta-section">
         <div className="container">
           <div className="hero-content">
-            <h1 className="animate-on-scroll" style={{ 
-              background: 'linear-gradient(135deg, #ffffff 0%, #e9ecef 20%, #dee2e6 40%, #adb5bd 70%, #868e96 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              fontWeight: '700'
-            }}>
+            <h1 className="animate-on-scroll gradient-text-primary">
               Sleep easy. Prysm's got your back.
             </h1>
             <p className="animate-on-scroll delay-1">
@@ -367,9 +257,9 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
           </div>
         </div>
       </section>
-      <footer style={{ padding: '40px 0', borderTop: '1px solid var(--border-color)' }}>
-        <div className="container" style={{ textAlign: 'center' }}>
-          <p style={{ color: 'var(--text-muted)', fontSize: '14px' }}>
+      <footer className="homepage-footer">
+        <div className="container homepage-footer-container">
+          <p className="homepage-footer-text">
             Made with ❤️ + AES-256 by Uday Savaliya.
           </p>
         </div>
