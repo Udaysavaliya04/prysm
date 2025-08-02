@@ -2,6 +2,8 @@
 
 A modern, secure password manager built with the MERN stack, featuring military-grade encryption and a beautiful dark-themed interface.
 
+https://github.com/user-attachments/assets/c0973280-f244-44c2-bba9-8371b1885c66
+
 ## Features
 
 ### Core Functionality
