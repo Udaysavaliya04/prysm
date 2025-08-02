@@ -33,9 +33,9 @@ const connectDB = async () => {
     console.log('MongoDB URI:', mongoURI.replace(/\/\/.*@/, '//***:***@')); // Hide creds in logs
     
     await mongoose.connect(mongoURI);
-    console.log('✅ Connected to MongoDB successfully!');
+    console.log('Connected to MongoDB successfully!');
   } catch (error) {
-    console.error('❌ MongoDB connection error:', error.message);
+    console.error('MongoDB connection error:', error.message);
     process.exit(1);
   }
 };
