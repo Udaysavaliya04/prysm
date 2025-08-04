@@ -41,12 +41,6 @@ Your Render deployment was failing because:
    npm start
    ```
 
-3. **Ensure Environment Variables are Set:**
-   ```
-   NODE_ENV=production
-   MONGODB_URI=mongodb+srv://user1:bro12345@cluster0.cytksem.mongodb.net/password-manager
-   PORT=10000
-   ```
 
 4. **Redeploy:**
    - Go to your Render dashboard
