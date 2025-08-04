@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 * {
   margin: 0;
@@ -100,8 +101,6 @@ html {
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-family: inter, 'inter',Verdana, Geneva, Tahoma, sans-serif;
-
   background-clip: text;
   font-weight: 700;
   letter-spacing: -0.015em;
@@ -954,7 +953,6 @@ code {
 }
 
 .nav-btn-secondary:hover {
-  background: var(--bg-hover);
   border-color: var(--border-hover);
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);

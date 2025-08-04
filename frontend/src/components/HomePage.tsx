@@ -61,7 +61,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
           <div className="hero-content">
             <h1
               className="animate-on-scroll gradient-text-primary homepage-hero-title"
-              style={{ paddingBottom: "5px", letterSpacing: "-0.1em" }}
+              style={{ paddingBottom: "5px", letterSpacing: "-0.08em" }}
             >
               Password and Access Management for Everyone.
             </h1>
@@ -90,7 +90,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
           <div className="header">
             <h1
               className="animate-on-scroll gradient-text-primary"
-              style={{ paddingBottom: "5px", letterSpacing: "-0.1em" }}
+              style={{ paddingBottom: "5px", letterSpacing: "-0.08em" }}
             >
               Take back control and secure what matters.
             </h1>
@@ -253,7 +253,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
           <div className="header">
             <h1
               className="animate-on-scroll gradient-text-primary"
-              style={{ paddingBottom: "5px", letterSpacing: "-0.1em" }}
+              style={{ paddingBottom: "5px", letterSpacing: "-0.08em" }}
             >
               Built for Security.
             </h1>
@@ -350,9 +350,9 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
           <div className="hero-content">
             <h1
               className="animate-on-scroll gradient-text-primary"
-              style={{ paddingBottom: "5px", letterSpacing: "-0.1em" }}
+              style={{ paddingBottom: "5px", letterSpacing: "-0.08em" }}
             >
-              Sleep easy. Prysm's got your back.
+              Sleep easy. <br></br>Prysm's got your back.
             </h1>
             <p
               className="animate-on-scroll delay-1"
