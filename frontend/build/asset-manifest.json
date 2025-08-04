@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.424504df.css",
+    "main.js": "/static/js/main.d7e17fe7.js",
+    "static/media/spiral-galaxy.webp": "/static/media/spiral-galaxy.9d99f0f73e2c7c5cd413.webp",
+    "index.html": "/index.html",
+    "main.424504df.css.map": "/static/css/main.424504df.css.map",
+    "main.d7e17fe7.js.map": "/static/js/main.d7e17fe7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.424504df.css",
+    "static/js/main.d7e17fe7.js"
+  ]
+}
