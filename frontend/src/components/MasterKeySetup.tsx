@@ -49,41 +49,27 @@ const MasterKeySetup: React.FC<MasterKeySetupProps> = ({ onMasterKeySet }) => {
   };
 
   return (
-    <div className="card" style={{
-      background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(233,236,239,0.02) 25%, rgba(222,226,230,0.01) 50%, rgba(173,181,189,0.02) 75%, rgba(134,142,150,0.03) 100%)',
-      backdropFilter: 'blur(10px)',
-      border: '1px solid rgba(255,255,255,0.1)'
-    }}>
+    <div className="card">
       <div className="header">
-        <h2 style={{ 
-          textWrap: 'nowrap',
-          fontSize: '2.5rem',
-          fontWeight: 'bold',
-          letterSpacing: '-0.02em',
-          paddingBottom: '10px',
-          background: 'linear-gradient(135deg, #ffffff 0%, #e9ecef 20%, #dee2e6 40%, #adb5bd 70%, #868e96 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text'
-        }}>
-          <img 
-            src="/key.svg" 
-            alt="key" 
-            style={{ 
-              height: '32px', 
-              width: 'auto', 
-              marginRight: '12px', 
-              verticalAlign: 'middle',
-              display: 'inline-block'
-            }} 
+        <h2 className="gradient-text-primary">
+          <img
+            src="/key.svg"
+            alt="key"
+            style={{
+              height: "32px",
+              width: "auto",
+              marginRight: "12px",
+              verticalAlign: "middle",
+              display: "inline-block",
+            }}
           />
           Set Your Master Key
         </h2>
-        <p style={{ textWrap: 'nowrap',color: 'var(--text-secondary)',opacity: '0.7',fontFamily:" 'fira code', 'Inter'",letterSpacing: '-0.02em',}}>
+        <p className="gradient-text-secondary">
           This key will encrypt and decrypt all your passwords. Keep it safe!
         </p>
       </div>
-      
+
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="masterKey">Master Key *</label>
@@ -92,23 +78,43 @@ const MasterKeySetup: React.FC<MasterKeySetupProps> = ({ onMasterKeySet }) => {
               type={showMasterKey ? "text" : "password"}
               id="masterKey"
               value={masterKey}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMasterKey(e.target.value)}
-              placeholder='Enter your master key (min 8 characters)'
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setMasterKey(e.target.value)
+              }
+              placeholder="Enter your master key (min 8 characters)"
               required
             />
             <button
               type="button"
-              onClick={() => setShowMasterKey(prev => !prev)}
+              onClick={() => setShowMasterKey((prev) => !prev)}
               className="password-visibility-toggle"
               title={showMasterKey ? "Hide password" : "Show password"}
             >
               {showMasterKey ? (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
                   <line x1="1" y1="1" x2="23" y2="23"></line>
                 </svg>
               ) : (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                   <circle cx="12" cy="12" r="3"></circle>
                 </svg>
@@ -116,7 +122,7 @@ const MasterKeySetup: React.FC<MasterKeySetupProps> = ({ onMasterKeySet }) => {
             </button>
           </div>
         </div>
-        
+
         <div className="form-group">
           <label htmlFor="confirmKey">Confirm Master Key *</label>
           <div className="password-input-container">
@@ -124,23 +130,43 @@ const MasterKeySetup: React.FC<MasterKeySetupProps> = ({ onMasterKeySet }) => {
               type={showConfirmKey ? "text" : "password"}
               id="confirmKey"
               value={confirmKey}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setConfirmKey(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setConfirmKey(e.target.value)
+              }
               placeholder="Confirm your master key"
               required
             />
             <button
               type="button"
-              onClick={() => setShowConfirmKey(prev => !prev)}
+              onClick={() => setShowConfirmKey((prev) => !prev)}
               className="password-visibility-toggle"
               title={showConfirmKey ? "Hide password" : "Show password"}
             >
               {showConfirmKey ? (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
                   <line x1="1" y1="1" x2="23" y2="23"></line>
                 </svg>
               ) : (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                   <circle cx="12" cy="12" r="3"></circle>
                 </svg>
@@ -148,56 +174,49 @@ const MasterKeySetup: React.FC<MasterKeySetupProps> = ({ onMasterKeySet }) => {
             </button>
           </div>
         </div>
-        
-        {error && (
-          <div style={{ 
-            color: 'var(--accent-danger)', 
-            marginBottom: '20px', 
-            padding: '12px', 
-            background: 'rgba(239, 68, 68, 0.1)', 
-            border: '1px solid rgba(239, 68, 68, 0.3)', 
-            borderRadius: '12px' 
-          }}>
-            {error}
-          </div>
-        )}
-        
-        <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
-          <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-            {isSubmitting ? 'Processing...' : 'Set Master Key & Continue'}
+
+        {error && <div className="error-message">{error}</div>}
+
+        <div className="password-actions">
+          <button
+            type="submit"
+            className="hero-btn hero-btn-primary"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Processing..." : "Set Master Key & Continue"}
           </button>
         </div>
       </form>
-      
-      <div style={{ 
-        marginTop: '24px', 
-        padding: '16px', 
-        background: 'rgba(245, 158, 11, 0.1)', 
-        border: '1px solid rgba(245, 158, 11, 0.3)', 
-        borderRadius: '12px' 
-      }}>
-        <h4 style={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          color: 'var(--accent-warning)', 
-          marginBottom: '8px',
-          background: 'linear-gradient(135deg, #ffffff 0%, #e8eaed 25%, #dadce0 50%, #adb5bd 75%, #868e96 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text'
-        }}>
-          <svg 
+
+      <div
+        style={{
+          marginTop: "24px",
+          padding: "16px",
+          background: "rgba(245, 158, 11, 0.1)",
+          border: "1px solid rgba(245, 158, 11, 0.3)",
+          borderRadius: "12px",
+        }}
+      >
+        <h4
+          style={{
+            display: "flex",
+            alignItems: "center",
+            color: "var(--accent-warning)",
+            marginBottom: "8px",
+          }}
+        >
+          <svg
             aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg" 
-            width="20" 
-            height="20" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            style={{ marginRight: '8px' }}
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{ marginRight: "8px" }}
           >
             <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
             <line x1="12" y1="9" x2="12" y2="13"></line>
@@ -205,7 +224,13 @@ const MasterKeySetup: React.FC<MasterKeySetupProps> = ({ onMasterKeySet }) => {
           </svg>
           Important Security Note
         </h4>
-        <ul style={{ margin: 0, paddingLeft: '20px', color: 'var(--text-secondary)' ,fontFamily:" 'fira code', 'Inter'",letterSpacing: '-0.01em',}}>
+        <ul
+          style={{
+            margin: 0,
+            paddingLeft: "20px",
+            color: "var(--text-secondary)",
+          }}
+        >
           <li>Your master key is never stored on our servers</li>
           <li>If you forget it, you cannot recover your passwords</li>
           <li>Use a strong, memorable password</li>

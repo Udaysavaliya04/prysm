@@ -211,25 +211,51 @@ function App(): JSX.Element {
       <nav className="nav">
         <div className="nav-container">
           <div className="nav-logo">
-            <img src="/prysm-logo.png" alt="Prysm Logo" style={{ height: '47px', width: 'auto', marginRight: '12px' }} />
+            <img
+              src="/prysm-logo.png"
+              alt="Prysm Logo"
+              style={{ height: "47px", width: "auto", marginRight: "12px" }}
+            />
           </div>
           <div className="nav-links">
-            <button onClick={handleLogout} className="nav-btn-danger">Logout</button>
+            <button
+              onClick={handleLogout}
+              className="hero-btn hero-btn-primary"
+              style={{ marginLeft: "auto", backgroundColor: 'red' , color: 'white', borderColor: 'red',background: 'linear-gradient(135deg, #ff7f7f 0%, #ff4d4d 100%)' , boxShadow: '0 4px 8px rgba(255, 0, 0, 0.2)' }}
+            >
+              Logout
+            </button>
           </div>
         </div>
       </nav>
 
-      <div className="container" style={{ paddingTop: '110px' }}>
-        
+      <div className="container" style={{ paddingTop: "110px" }}>
         <div className="card">
           <div className="master-key-section">
-            <h3 style={{ 
-              background: 'linear-gradient(135deg, #ffffff 0%, #e8eaed 25%, #dadce0 50%, #adb5bd 75%, #868e96 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
-            }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline-block', marginRight: '8px', verticalAlign: 'middle' }}>
+            <h3
+              style={{
+                background:
+                  "linear-gradient(135deg, #ffffff 0%, #e8eaed 25%, #dadce0 50%, #adb5bd 75%, #868e96 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{
+                  display: "inline-block",
+                  marginRight: "8px",
+                  verticalAlign: "middle",
+                }}
+              >
                 <path d="M15 7h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3"></path>
                 <path d="M10 12h4"></path>
                 <path d="M10 16h4"></path>
@@ -238,27 +264,43 @@ function App(): JSX.Element {
               </svg>
               Master Key
             </h3>
-            <div className="master-key-display" style={{
-              padding: '12px',
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(233,236,239,0.02) 25%, rgba(222,226,230,0.01) 50%, rgba(173,181,189,0.02) 75%, rgba(134,142,150,0.03) 100%)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: '12px',
-              fontFamily: 'monospace',
-              fontSize: '14px',
-              color: 'var(--text-primary)',
-              wordBreak: 'break-all',
-              minHeight: '20px'
-            }}>
+            <div
+              className="master-key-display"
+              style={{
+                padding: "12px",
+                background:
+                  "linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(233,236,239,0.02) 25%, rgba(222,226,230,0.01) 50%, rgba(173,181,189,0.02) 75%, rgba(134,142,150,0.03) 100%)",
+                backdropFilter: "blur(10px)",
+                border: "1px solid rgba(255,255,255,0.1)",
+                borderRadius: "12px",
+                fontFamily: "monospace",
+                fontSize: "14px",
+                color: "var(--text-primary)",
+                wordBreak: "break-all",
+                minHeight: "20px",
+              }}
+            >
               {masterKey}
             </div>
-            <p style={{ marginTop: '10px', fontSize: '14px', color: '#856404' }}>
+            <p
+              style={{ marginTop: "10px", fontSize: "14px", color: "#856404" }}
+            >
               Keep this key safe! You'll need it to access your passwords.
             </p>
           </div>
 
           <button className="add-btn" onClick={() => setShowForm(true)}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px' }}>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{ marginRight: "8px" }}
+            >
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
@@ -270,7 +312,9 @@ function App(): JSX.Element {
               type="text"
               placeholder="Search passwords..."
               value={searchTerm}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setSearchTerm(e.target.value)
+              }
             />
           </div>
 
@@ -288,8 +332,8 @@ function App(): JSX.Element {
           )}
         </div>
 
-        {showForm && (
-          editingPassword ? (
+        {showForm &&
+          (editingPassword ? (
             <PasswordForm
               password={editingPassword}
               passwords={passwords}
@@ -303,18 +347,26 @@ function App(): JSX.Element {
               onSubmit={addPassword}
               onClose={handleFormClose}
             />
-          )
-        )}
+          ))}
       </div>
 
       {/* Scroll to Top Button */}
-      <button 
-        className={`scroll-to-top ${showScrollToTop ? 'visible' : ''}`}
+      <button
+        className={`scroll-to-top ${showScrollToTop ? "visible" : ""}`}
         onClick={scrollToTop}
         aria-label="Scroll to top"
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="m18 15-6-6-6 6"/>
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="m18 15-6-6-6 6" />
         </svg>
       </button>
     </div>

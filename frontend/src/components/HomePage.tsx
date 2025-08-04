@@ -27,7 +27,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
   }, []);
 
   return (
-    <div>
+    <div className="homepage-container">
       {/* Nav */}
       <nav className="nav">
         <div className="nav-container homepage-nav-container">
@@ -47,11 +47,14 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
       <section className="hero">
         <div className="container">
           <div className="hero-content">
-            <h1 className="animate-on-scroll gradient-text-primary">
+            <h1 className="animate-on-scroll gradient-text-primary homepage-hero-title"
+            style={{ paddingBottom: '5px', letterSpacing: '-0.05em' }}>
               Password and Access Management for Everyone.
             </h1>
-            <h2 className="animate-on-scroll delay-1 gradient-text-secondary homepage-hero-subtitle" style={{paddingBottom: '30px'}}>
-              Security so good, even you'll forget your password but we won't.
+            <h2 className="animate-on-scroll delay-1 gradient-text-secondary homepage-hero-subtitle"
+            style={{ paddingBottom: '30px', letterSpacing: '-0.05em' }}>
+              Security so good, even you'll forget your password
+              <br></br>But we won't.
             </h2>
             <div className="hero-buttons animate-on-scroll delay-2">
               <button onClick={onSignUp} className="hero-btn hero-btn-primary">
@@ -245,7 +248,9 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
             <h1 className="animate-on-scroll gradient-text-primary">
               Sleep easy. Prysm's got your back.
             </h1>
-            <p className="animate-on-scroll delay-1">
+            <p className="animate-on-scroll delay-1" style={{
+              color: 'var(--text-secondary)', opacity: '1', fontFamily: "'Fira Code', 'Inter'", letterSpacing: '-0.05em', fontWeight: '500'
+            }}>
               Join thousands of users who trust Prysm with their sensitive data. 
               Get started in seconds, no registration required.
             </p>
