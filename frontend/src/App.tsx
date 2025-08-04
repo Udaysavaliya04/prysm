@@ -6,6 +6,7 @@ import MasterKeySetup from './components/MasterKeySetup';
 import MasterKeyLogin from './components/MasterKeyLogin';
 import HomePage from './components/HomePage';
 import { Password, PasswordFormData } from './types';
+import { API_BASE_URL } from './config/api';
 
 function App(): JSX.Element {
   const [passwords, setPasswords] = useState<Password[]>([]);
@@ -16,8 +17,6 @@ function App(): JSX.Element {
   const [loading, setLoading] = useState<boolean>(false);
   const [currentView, setCurrentView] = useState<'home' | 'setup' | 'login' | 'manager'>('home');
   const [showScrollToTop, setShowScrollToTop] = useState<boolean>(false);
-
-  const API_BASE_URL: string = 'http://localhost:5000/api';
 
   // Scroll to top function
   const scrollToTop = (): void => {

@@ -4,10 +4,14 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon backend/server.js",
+    "start": "NODE_ENV=production node backend/server.js",
     "server": "node backend/server.js",
     "client": "cd frontend && npm start",
     "dev:full": "concurrently \"npm run server\" \"npm run client\"",
-    "install:all": "npm install && cd frontend && npm install"
+    "install:all": "npm install && cd frontend && npm install",
+    "build": "node build.js",
+    "build:frontend": "cd frontend && npm install && npm run build",
+    "heroku-postbuild": "npm run build:frontend"
   },
   "type": "module",
   "keywords": [],

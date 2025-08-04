@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../config/api';
 
 interface MasterKeySetupProps {
   onMasterKeySet: (key: string) => void;
@@ -35,7 +36,7 @@ const MasterKeySetup: React.FC<MasterKeySetupProps> = ({ onMasterKeySet }) => {
     setIsSubmitting(true);
 
     try {
-      await axios.post('http://localhost:5000/api/master-key', { masterKey });
+      await axios.post(`${API_BASE_URL}/master-key`, { masterKey });
       onMasterKeySet(masterKey);
     } catch (apiError) {
       if (axios.isAxiosError(apiError) && apiError.response) {

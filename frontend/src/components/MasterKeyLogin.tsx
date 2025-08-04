@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../config/api';
 
 interface MasterKeyLoginProps {
   onMasterKeySet: (key: string) => void;
@@ -23,7 +24,7 @@ const MasterKeyLogin: React.FC<MasterKeyLoginProps> = ({ onMasterKeySet }) => {
     setIsSubmitting(true);
 
     try {
-      const checkResponse = await axios.get(`http://localhost:5000/api/master-key/check?masterKey=${encodeURIComponent(masterKey)}`);
+      const checkResponse = await axios.get(`${API_BASE_URL}/master-key/check?masterKey=${encodeURIComponent(masterKey)}`);
       if (checkResponse.data.isSet) {
         onMasterKeySet(masterKey);
       } else {

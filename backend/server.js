@@ -6,6 +6,7 @@ import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import fs from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,7 +19,9 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://prysm-upz7.onrender.com', 'https://prysm-upz7.onrender.com/'] 
+    : 'http://localhost:3000',
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -306,12 +309,32 @@ app.delete('/api/passwords/:id', async (req, res) => {
   }
 });
 
-// Serve static assets in prod
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../frontend/build')));
+// Serve static assets in production
+const isProduction = process.env.NODE_ENV === 'production';
+const buildPath = path.join(__dirname, '../frontend/build');
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+if (isProduction) {
+  // Check if build directory exists
+  if (fs.existsSync(buildPath)) {
+    app.use(express.static(buildPath));
+    
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(buildPath, 'index.html'));
+    });
+    console.log('Serving React app from build directory');
+  } else {
+    console.error('Build directory not found at:', buildPath);
+    app.get('*', (req, res) => {
+      res.status(404).json({ 
+        error: 'Frontend build not found. Please build the React app first.',
+        message: 'Run "npm run build" to create the production build.',
+        buildPath: buildPath
+      });
+    });
+  }
+} else {
+  app.get('/', (req, res) => {
+    res.json({ message: 'Password Manager API - Development Mode' });
   });
 }
 
