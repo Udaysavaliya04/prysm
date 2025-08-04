@@ -96,9 +96,7 @@ function App(): JSX.Element {
     if (!window.confirm('Are you sure you want to delete this password?')) return;
     
     try {
-      await axios.delete(`${API_BASE_URL}/passwords/${id}`, {
-        data: { masterKey }
-      });
+      await axios.delete(`${API_BASE_URL}/passwords/${id}?masterKey=${encodeURIComponent(masterKey)}`);
       setPasswords(passwords.filter(pwd => pwd._id !== id));
     } catch (error) {
       console.error('Error deleting password:', error);

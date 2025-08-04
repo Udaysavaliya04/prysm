@@ -20,8 +20,13 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://prysm-upz7.onrender.com', 'https://prysm-upz7.onrender.com/'] 
-    : 'http://localhost:3000',
+    ? [
+        'https://prysm-frontend.onrender.com',
+        'https://prysm-frontend.onrender.com/',
+        'https://prysm-upz7.onrender.com',
+        'https://prysm-upz7.onrender.com/'
+      ]
+    : ['http://localhost:3000', 'http://localhost:3001'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -282,7 +287,11 @@ app.delete('/api/passwords/:id', async (req, res) => {
     const { id } = req.params;
     const { masterKey } = req.query;
     
+    console.log(`DELETE request for password ID: ${id}`);
+    console.log(`Master key provided: ${masterKey ? 'Yes' : 'No'}`);
+    
     if (!masterKey) {
+      console.log('Error: Master key is required but not provided');
       return res.status(400).json({ error: 'Master key is required' });
     }
 
@@ -290,18 +299,21 @@ app.delete('/api/passwords/:id', async (req, res) => {
     const userData = await UserData.findOne({ masterKeyHash });
 
     if (!userData) {
+      console.log('Error: Invalid master key provided');
       return res.status(401).json({ error: 'Invalid master key' });
     }
 
     const passwordIndex = userData.passwords.findIndex(p => p._id.toString() === id);
 
     if (passwordIndex === -1) {
+      console.log(`Error: Password with ID ${id} not found`);
       return res.status(404).json({ error: 'Password not found' });
     }
 
     userData.passwords.splice(passwordIndex, 1);
     await userData.save();
-
+    
+    console.log(`Successfully deleted password with ID: ${id}`);
     res.status(200).json({ message: 'Password deleted successfully' });
   } catch (error) {
     console.error('Error in DELETE /api/passwords/:id:', error);
@@ -309,33 +321,30 @@ app.delete('/api/passwords/:id', async (req, res) => {
   }
 });
 
-// Serve static assets in production
-const isProduction = process.env.NODE_ENV === 'production';
-const buildPath = path.join(__dirname, '../frontend/build');
-
-if (isProduction) {
-  // Check if build directory exists
-  if (fs.existsSync(buildPath)) {
-    app.use(express.static(buildPath));
-    
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(buildPath, 'index.html'));
-    });
-    console.log('Serving React app from build directory');
-  } else {
-    console.error('Build directory not found at:', buildPath);
-    app.get('*', (req, res) => {
-      res.status(404).json({ 
-        error: 'Frontend build not found. Please build the React app first.',
-        message: 'Run "npm run build" to create the production build.',
-        buildPath: buildPath
-      });
-    });
-  }
-} else {
-  app.get('/', (req, res) => {
-    res.json({ message: 'Password Manager API - Development Mode' });
+// Health check endpoint for backend service
+app.get('/health', (req, res) => {
+  res.status(200).json({ 
+    status: 'healthy', 
+    service: 'Prysm Password Manager API',
+    version: '1.0.0',
+    timestamp: new Date().toISOString()
   });
-}
+});
+
+// API routes info
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'Prysm Password Manager API',
+    version: '1.0.0',
+    endpoints: {
+      health: '/health',
+      masterKey: '/api/master-key',
+      passwords: '/api/passwords'
+    }
+  });
+});
+
+// Remove static file serving since frontend will be separate
+// In production, we're now serving only the API
 
 app.listen(PORT, () => console.log(`🚀 Server is running on port ${PORT}`)); 
