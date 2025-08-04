@@ -76,13 +76,15 @@ This will:
 
 ```
 ├── backend/
-│   ├── server.js          # Express server
+│   ├── server.js          # Express server (serves API + static files)
 │   └── env.config         # Environment variables
 ├── frontend/
 │   ├── src/               # React source code
 │   ├── public/            # Static assets
-│   └── build/             # Production build (created after build)
+│   └── build/             # Frontend build (created during build)
+├── build/                 # Production build (copied from frontend/build)
 ├── package.json           # Root dependencies and scripts
+├── build-deploy.js        # Build script for deployment
 └── render.yaml           # Render deployment configuration
 ```
 
@@ -107,13 +109,23 @@ This will:
 
 ### Build Directory Not Found Error
 
-If you see the error: `Error: ENOENT: no such file or directory, stat '/opt/render/project/src/frontend/build/index.html'`
+If you see the error: `Publish directory build does not exist!`
 
-This means the React app hasn't been built yet. Make sure:
+This means the React app build wasn't copied to the root directory. The fix is:
 
-1. Your build command is set to: `npm run build:frontend`
-2. The build process completes successfully
-3. The `frontend/build` directory is created
+1. **Ensure build command is correct**: `npm run build:frontend`
+2. **Check build process**: The build script should:
+   - Install frontend dependencies
+   - Build the React app in `frontend/build/`
+   - Copy the build files to root `build/` directory
+3. **Verify files are copied**: After build, you should see `build/index.html` in the root
+4. **Server configuration**: The server serves static files from `build/` in production
+
+The build process now:
+1. Runs `npm install` for both backend and frontend
+2. Builds the React app with `npm run build` in frontend/
+3. Copies `frontend/build/` to root `build/` directory
+4. Server serves static files from root `build/` directory
 
 ### Environment Variables
 

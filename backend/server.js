@@ -344,7 +344,15 @@ app.get('/', (req, res) => {
   });
 });
 
-// Remove static file serving since frontend will be separate
-// In production, we're now serving only the API
+// Serve static files from the React app build directory
+if (process.env.NODE_ENV === 'production') {
+  const buildPath = path.join(__dirname, '..', 'build');
+  app.use(express.static(buildPath));
+  
+  // Handle React routing, return all requests to React app
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(buildPath, 'index.html'));
+  });
+}
 
 app.listen(PORT, () => console.log(`🚀 Server is running on port ${PORT}`)); 

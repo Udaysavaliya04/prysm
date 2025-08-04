@@ -10,7 +10,7 @@
     "dev:full": "concurrently \"npm run server\" \"npm run client\"",
     "install:all": "npm install && cd frontend && npm install",
     "build": "node build.js",
-    "build:frontend": "cd frontend && npm install && npm run build",
+    "build:frontend": "node build-deploy.js",
     "heroku-postbuild": "npm run build:frontend"
   },
   "type": "module",

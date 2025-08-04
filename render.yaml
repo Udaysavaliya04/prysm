@@ -5,6 +5,7 @@ services:
     plan: starter
     buildCommand: npm run build:frontend
     startCommand: npm start
+    publishDir: build
     envVars:
       - key: NODE_ENV
         value: production
