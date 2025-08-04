@@ -134,7 +134,7 @@ html {
 
 /* Homepage specific styles */
 .homepage-container {
-  background-image: url('D:\prysm\frontend\public\spiral-galaxy.webp');
+  background-image: url('./assets/spiral-galaxy.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

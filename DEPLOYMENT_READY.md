@@ -25,11 +25,14 @@ Your project is now configured for **separate deployment**:
 3. ✅ Added health check endpoint
 4. ✅ Updated CORS for separate domains
 5. ✅ Added backend-specific `render.yaml`
+6. ✅ Fixed DELETE password API endpoint
 
 ### Frontend Changes:
 1. ✅ Updated API configuration to point to separate backend
 2. ✅ Added environment variable support (`REACT_APP_API_URL`)
 3. ✅ Added frontend-specific `render.yaml`
+4. ✅ Fixed image path issues for production builds
+5. ✅ Fixed DELETE password request format
 
 ## 📋 Deployment Steps
 
@@ -151,5 +154,22 @@ prysm/
 3. **Scalability**: Services scale independently
 4. **Maintainability**: Clear separation of concerns
 5. **Development**: Easier to work on each part separately
+
+## 🛠️ Troubleshooting
+
+### Build Failures
+- **Image Path Issues**: Make sure all images in CSS use relative paths from `src/assets/` or proper public URL references
+- **Module Not Found**: Check that all imports use correct relative paths, not absolute Windows/Mac paths
+- **Environment Variables**: Ensure `REACT_APP_API_URL` is set correctly for production builds
+
+### API Connection Issues
+- **CORS Errors**: Make sure frontend URL is added to backend CORS configuration
+- **404 Errors**: Verify backend service is running and API endpoints are accessible
+- **Master Key Issues**: Check that masterKey is being sent as query parameter, not in request body
+
+### Recent Fixes Applied:
+- ✅ Fixed absolute Windows path in CSS (`D:\prysm\frontend\public\spiral-galaxy.webp` → `./assets/spiral-galaxy.webp`)
+- ✅ Fixed DELETE password request format (moved masterKey from body to query parameter)
+- ✅ Enhanced backend error logging for better debugging
 
 Your project is now ready for separate deployment! 🎉
