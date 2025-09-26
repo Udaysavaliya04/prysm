@@ -42,26 +42,27 @@ const MasterKeyLogin: React.FC<MasterKeyLoginProps> = ({ onMasterKeySet }) => {
   };
 
   return (
-    <div className="card">
-      <div className="header">
-        <h2 className="gradient-text-primary">
-          <img
-            src="/key.svg"
-            alt="key"
-            style={{
-              height: "32px",
-              width: "auto",
-              marginRight: "12px",
-              verticalAlign: "middle",
-              display: "inline-block",
-            }}
-          />
-          Enter Your Master Key
-        </h2>
-        <p className="gradient-text-secondary">
-          Enter your master key to unlock your passwords.
-        </p>
-      </div>
+    <div className="master-key-container">
+      <div className="card">
+        <div className="header">
+          <h2 className="gradient-text-primary">
+            <img
+              src="/key.svg"
+              alt="key"
+              style={{
+                height: "32px",
+                width: "auto",
+                marginRight: "12px",
+                verticalAlign: "middle",
+                display: "inline-block",
+              }}
+            />
+            Enter Your Master Key
+          </h2>
+          <p className="gradient-text-secondary">
+            Enter your master key to unlock your passwords.
+          </p>
+        </div>
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -128,6 +129,7 @@ const MasterKeyLogin: React.FC<MasterKeyLoginProps> = ({ onMasterKeySet }) => {
           </button>
         </div>
       </form>
+      </div>
     </div>
   );
 };

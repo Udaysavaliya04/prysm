@@ -50,26 +50,27 @@ const MasterKeySetup: React.FC<MasterKeySetupProps> = ({ onMasterKeySet }) => {
   };
 
   return (
-    <div className="card">
-      <div className="header">
-        <h2 className="gradient-text-primary">
-          <img
-            src="/key.svg"
-            alt="key"
-            style={{
-              height: "32px",
-              width: "auto",
-              marginRight: "12px",
-              verticalAlign: "middle",
-              display: "inline-block",
-            }}
-          />
-          Set Your Master Key
-        </h2>
-        <p className="gradient-text-secondary">
-          This key will encrypt and decrypt all your passwords. Keep it safe!
-        </p>
-      </div>
+    <div className="master-key-container">
+      <div className="card">
+        <div className="header">
+          <h2 className="gradient-text-primary">
+            <img
+              src="/key.svg"
+              alt="key"
+              style={{
+                height: "32px",
+                width: "auto",
+                marginRight: "12px",
+                verticalAlign: "middle",
+                display: "inline-block",
+              }}
+            />
+            Set Your Master Key
+          </h2>
+          <p className="gradient-text-secondary">
+            This key will encrypt and decrypt all your passwords. Keep it safe!
+          </p>
+        </div>
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -85,6 +86,7 @@ const MasterKeySetup: React.FC<MasterKeySetupProps> = ({ onMasterKeySet }) => {
               placeholder="Enter your master key (min 8 characters)"
               required
             />
+            
             <button
               type="button"
               onClick={() => setShowMasterKey((prev) => !prev)}
@@ -237,6 +239,7 @@ const MasterKeySetup: React.FC<MasterKeySetupProps> = ({ onMasterKeySet }) => {
           <li>Use a strong, memorable password</li>
           <li>Consider using a password manager to store this key</li>
         </ul>
+      </div>
       </div>
     </div>
   );

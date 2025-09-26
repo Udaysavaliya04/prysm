@@ -205,6 +205,74 @@ html {
   font-size: 20px;
 }
 
+/* Master Key pages background - full screen same as homepage */
+.master-key-container {
+  background-image: url('./assets/spiral-galaxy.webp');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 110px 20px 40px 20px;
+}
+
+.master-key-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(0.045em) saturate(1.5);
+  -webkit-backdrop-filter: blur(0.025em) saturate(1.5);
+  z-index: 1;
+}
+
+.master-key-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: inherit;
+  background-size: inherit;
+  background-position: inherit;
+  background-attachment: inherit;
+  background-repeat: inherit;
+  z-index: 0;
+}
+
+.master-key-container > * {
+  position: relative;
+  z-index: 2;
+  max-width: 1150px;
+  width: 100%;
+}
+
+/* Just make input fields transparent */
+.master-key-container .form-group input {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(30px) saturate(1) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(1.5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+}
+
+.master-key-container .form-group input:focus {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(20px) saturate(1.8) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(2) !important;
+}
+
 .homepage-security-section {
   background: rgba(255, 255, 255, 0.008);
   backdrop-filter: blur(60px) saturate(200%);
