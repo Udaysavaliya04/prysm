@@ -11,45 +11,6 @@ html {
   scroll-padding-top: 80px; 
 }
 
-/* Scroll to top */
-.scroll-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  background: var(--gradient-primary);
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
-}
-
-.scroll-to-top.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.scroll-to-top:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
-}
-
-.scroll-to-top svg {
-  width: 20px;
-  height: 20px;
-  color: white;
-}
-
 .page-container {
   min-height: 100vh;
   padding-top: 0;
@@ -583,68 +544,8 @@ code {
   outline: none;
 }
 
-.password-details {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-
-
-
-
 /* Copy Button */
 .modern-copy-btn {
-  background: var(--bg-tertiary);
-  color: var(--text-secondary);
-  border: 1px solid var(--border-color);
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 500;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-left: 8px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  position: relative;
-  overflow: hidden;
-}
-
-.modern-copy-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-  transition: left 0.5s;
-}
-
-.modern-copy-btn:hover::before {
-  left: 100%;
-}
-
-.modern-copy-btn:hover {
-  background: var(--bg-hover);
-  border-color: var(--border-hover);
-  color: var(--text-primary);
-  transform: translateY(-1px);
-}
-
-.modern-copy-btn svg {
-  transition: transform 0.1s ease;
-}
-
-.modern-copy-btn:hover svg {
-  transform: scale(1.05);
-}
-
-/* Form Modal */
-.modal {
   position: fixed;
   z-index: 1000;
   left: 0;

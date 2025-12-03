@@ -9,7 +9,6 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Load environment variables from env.config
 dotenv.config({ path: path.join(__dirname, 'env.config') });
 
 const app = express();
@@ -27,7 +26,7 @@ const connectDB = async () => {
   try {
     const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/password-manager';
     console.log('Attempting to connect to MongoDB...');
-    console.log('MongoDB URI:', mongoURI.replace(/\/\/.*@/, '//***:***@')); // Hide creds in logs
+    console.log('MongoDB URI:', mongoURI.replace(/\/\/.*@/, '//***:***@'));
     
     await mongoose.connect(mongoURI);
     console.log('Connected to MongoDB successfully!');
@@ -57,10 +56,8 @@ const userDataSchema = new mongoose.Schema({
 
 const UserData = mongoose.model('UserData', userDataSchema);
 
-// Encrypton/Decryption stuff
 const encryptPassword = (password, masterKey) => {
   try {
-    // Create key from masterkey with SHA-256
     const key = crypto.createHash('sha256').update(masterKey).digest();
     const iv = crypto.randomBytes(16);
     
@@ -68,7 +65,6 @@ const encryptPassword = (password, masterKey) => {
     let encrypted = cipher.update(password, 'utf8', 'hex');
     encrypted += cipher.final('hex');
     
-    // Return IV + encrypted stuff
     return iv.toString('hex') + ':' + encrypted;
   } catch (error) {
     throw new Error('Encryption failed: ' + error.message);
@@ -77,10 +73,8 @@ const encryptPassword = (password, masterKey) => {
 
 const decryptPassword = (encryptedPassword, masterKey) => {
   try {
-    // creating key from master key using SHA-256
     const key = crypto.createHash('sha256').update(masterKey).digest();
     
-    // Split IV and the data
     const parts = encryptedPassword.split(':');
     if (parts.length !== 2) {
       throw new Error('Invalid encrypted data format');
@@ -98,11 +92,6 @@ const decryptPassword = (encryptedPassword, masterKey) => {
     return 'Decryption failed';
   }
 };
-
-// Test route
-app.get('/api/test', (req, res) => {
-  res.json({ message: 'Server is running!' });
-});
 
 // Check if master key is setup
 app.get('/api/master-key/is-setup', async (req, res) => {
@@ -197,7 +186,6 @@ app.post('/api/passwords', async (req, res) => {
       return res.status(401).json({ error: 'Invalid master key' });
     }
 
-    // Encrypt pass before storing
     const encryptedPassword = encryptPassword(password, masterKey);
 
     const newPassword = {
@@ -213,7 +201,6 @@ app.post('/api/passwords', async (req, res) => {
     userData.passwords.push(newPassword);
     await userData.save();
 
-    // Find the saved password more reliably.
     const savedPassword = userData.passwords[userData.passwords.length - 1];
 
     res.status(201).json({
@@ -248,7 +235,6 @@ app.put('/api/passwords/:id', async (req, res) => {
       return res.status(404).json({ error: 'Password not found' });
     }
 
-    // Update fields
     passwordToUpdate.title = title;
     passwordToUpdate.username = username;
     passwordToUpdate.url = url;
@@ -276,11 +262,7 @@ app.delete('/api/passwords/:id', async (req, res) => {
     const { id } = req.params;
     const { masterKey } = req.query;
     
-    console.log(`DELETE request for password ID: ${id}`);
-    console.log(`Master key provided: ${masterKey ? 'Yes' : 'No'}`);
-    
     if (!masterKey) {
-      console.log('Error: Master key is required but not provided');
       return res.status(400).json({ error: 'Master key is required' });
     }
 
@@ -288,21 +270,18 @@ app.delete('/api/passwords/:id', async (req, res) => {
     const userData = await UserData.findOne({ masterKeyHash });
 
     if (!userData) {
-      console.log('Error: Invalid master key provided');
       return res.status(401).json({ error: 'Invalid master key' });
     }
 
     const passwordIndex = userData.passwords.findIndex(p => p._id.toString() === id);
 
     if (passwordIndex === -1) {
-      console.log(`Error: Password with ID ${id} not found`);
       return res.status(404).json({ error: 'Password not found' });
     }
 
     userData.passwords.splice(passwordIndex, 1);
     await userData.save();
     
-    console.log(`Successfully deleted password with ID: ${id}`);
     res.status(200).json({ message: 'Password deleted successfully' });
   } catch (error) {
     console.error('Error in DELETE /api/passwords/:id:', error);
