@@ -2,11 +2,9 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import fs from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -19,17 +17,8 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? [
-        'https://prysm-frontend.onrender.com',
-        'https://prysm-frontend.onrender.com/',
-        'https://prysm-upz7.onrender.com',
-        'https://prysm-upz7.onrender.com/'
-      ]
-    : ['http://localhost:3000', 'http://localhost:3001'],
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  origin: true,
+  credentials: true
 }));
 app.use(express.json());
 
@@ -343,16 +332,5 @@ app.get('/', (req, res) => {
     }
   });
 });
-
-// Serve static files from the React app build directory
-if (process.env.NODE_ENV === 'production') {
-  const buildPath = path.join(__dirname, '..', 'build');
-  app.use(express.static(buildPath));
-  
-  // Handle React routing, return all requests to React app
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(buildPath, 'index.html'));
-  });
-}
 
 app.listen(PORT, () => console.log(`🚀 Server is running on port ${PORT}`)); 
