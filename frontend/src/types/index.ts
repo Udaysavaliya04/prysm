@@ -17,11 +17,6 @@ export interface PasswordFormData {
   notes: string;
 }
 
-export interface ApiResponse<T> {
-  data: T;
-  error?: string;
-}
-
 export interface MasterKeyInputProps {
   onMasterKeySet: (masterKey: string) => void;
 }
