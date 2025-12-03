@@ -544,8 +544,8 @@ code {
   outline: none;
 }
 
-/* Copy Button */
-.modern-copy-btn {
+/* Modal Overlay */
+.modal {
   position: fixed;
   z-index: 1000;
   left: 0;
