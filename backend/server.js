@@ -56,6 +56,18 @@ const userDataSchema = new mongoose.Schema({
 
 const UserData = mongoose.model('UserData', userDataSchema);
 
+const validateMasterKey = async (masterKey) => {
+  if (!masterKey) {
+    throw { status: 400, message: 'Master key is required' };
+  }
+  const masterKeyHash = crypto.createHash('sha256').update(masterKey).digest('hex');
+  const userData = await UserData.findOne({ masterKeyHash });
+  if (!userData) {
+    throw { status: 401, message: 'Invalid master key' };
+  }
+  return { userData, masterKeyHash };
+};
+
 const encryptPassword = (password, masterKey) => {
   try {
     const key = crypto.createHash('sha256').update(masterKey).digest();
@@ -147,134 +159,75 @@ app.post('/api/master-key', async (req, res) => {
 // Routes
 app.get('/api/passwords', async (req, res) => {
   try {
-    const { masterKey } = req.query;
-    if (!masterKey) {
-      return res.status(400).json({ error: 'Master key is required' });
-    }
-    
-    const masterKeyHash = crypto.createHash('sha256').update(masterKey).digest('hex');
-    const userData = await UserData.findOne({ masterKeyHash });
+    const { userData } = await validateMasterKey(req.query.masterKey);
 
-    if (!userData) {
-      return res.status(401).json({ error: 'Invalid master key' });
-    }
-
-    // Decrypt passwords before sending to user
-    const decryptedPasswords = userData.passwords.map(p => ({
-      ...p.toObject(),
-      password: decryptPassword(p.password, masterKey)
-    })).sort((a, b) => b.createdAt - a.createdAt);
+    const decryptedPasswords = userData.passwords
+      .map(p => ({ ...p.toObject(), password: decryptPassword(p.password, req.query.masterKey) }))
+      .sort((a, b) => b.createdAt - a.createdAt);
 
     res.json(decryptedPasswords);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(error.status || 500).json({ error: error.message });
   }
 });
 
 app.post('/api/passwords', async (req, res) => {
   try {
     const { title, username, password, url, notes, masterKey } = req.body;
-    
-    if (!masterKey) {
-      return res.status(400).json({ error: 'Master key is required' });
-    }
-
-    const masterKeyHash = crypto.createHash('sha256').update(masterKey).digest('hex');
-    const userData = await UserData.findOne({ masterKeyHash });
-
-    if (!userData) {
-      return res.status(401).json({ error: 'Invalid master key' });
-    }
-
-    const encryptedPassword = encryptPassword(password, masterKey);
+    const { userData } = await validateMasterKey(masterKey);
 
     const newPassword = {
       title,
       username,
-      password: encryptedPassword,
+      password: encryptPassword(password, masterKey),
       url,
-      notes,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      notes
     };
     
     userData.passwords.push(newPassword);
     await userData.save();
 
     const savedPassword = userData.passwords[userData.passwords.length - 1];
-
     res.status(201).json({
       ...savedPassword.toObject(),
       password: decryptPassword(savedPassword.password, masterKey)
     });
   } catch (error) {
     console.error('Error in POST /api/passwords:', error);
-    res.status(500).json({ error: error.message });
+    res.status(error.status || 500).json({ error: error.message });
   }
 });
 
 app.put('/api/passwords/:id', async (req, res) => {
   try {
-    const { id } = req.params;
     const { title, username, password, url, notes, masterKey } = req.body;
-    
-    if (!masterKey) {
-      return res.status(400).json({ error: 'Master key is required' });
-    }
+    const { userData } = await validateMasterKey(masterKey);
 
-    const masterKeyHash = crypto.createHash('sha256').update(masterKey).digest('hex');
-    const userData = await UserData.findOne({ masterKeyHash });
-
-    if (!userData) {
-      return res.status(401).json({ error: 'Invalid master key' });
-    }
-
-    const passwordToUpdate = userData.passwords.id(id);
-
+    const passwordToUpdate = userData.passwords.id(req.params.id);
     if (!passwordToUpdate) {
       return res.status(404).json({ error: 'Password not found' });
     }
 
-    passwordToUpdate.title = title;
-    passwordToUpdate.username = username;
-    passwordToUpdate.url = url;
-    passwordToUpdate.notes = notes;
-    passwordToUpdate.updatedAt = new Date();
-
-    if (password) {
-      passwordToUpdate.password = encryptPassword(password, masterKey);
-    }
+    Object.assign(passwordToUpdate, { title, username, url, notes, updatedAt: new Date() });
+    if (password) passwordToUpdate.password = encryptPassword(password, masterKey);
     
     await userData.save();
 
     res.json({
       ...passwordToUpdate.toObject(),
-      password: password ? 'Password updated' : decryptPassword(passwordToUpdate.password, masterKey),
+      password: password ? 'Password updated' : decryptPassword(passwordToUpdate.password, masterKey)
     });
   } catch (error) {
     console.error('Error in PUT /api/passwords/:id:', error);
-    res.status(500).json({ error: 'Server error updating password' });
+    res.status(error.status || 500).json({ error: error.message || 'Server error updating password' });
   }
 });
 
 app.delete('/api/passwords/:id', async (req, res) => {
   try {
-    const { id } = req.params;
-    const { masterKey } = req.query;
-    
-    if (!masterKey) {
-      return res.status(400).json({ error: 'Master key is required' });
-    }
+    const { userData } = await validateMasterKey(req.query.masterKey);
 
-    const masterKeyHash = crypto.createHash('sha256').update(masterKey).digest('hex');
-    const userData = await UserData.findOne({ masterKeyHash });
-
-    if (!userData) {
-      return res.status(401).json({ error: 'Invalid master key' });
-    }
-
-    const passwordIndex = userData.passwords.findIndex(p => p._id.toString() === id);
-
+    const passwordIndex = userData.passwords.findIndex(p => p._id.toString() === req.params.id);
     if (passwordIndex === -1) {
       return res.status(404).json({ error: 'Password not found' });
     }
@@ -282,16 +235,15 @@ app.delete('/api/passwords/:id', async (req, res) => {
     userData.passwords.splice(passwordIndex, 1);
     await userData.save();
     
-    res.status(200).json({ message: 'Password deleted successfully' });
+    res.json({ message: 'Password deleted successfully' });
   } catch (error) {
     console.error('Error in DELETE /api/passwords/:id:', error);
-    res.status(500).json({ error: 'Server error deleting password' });
+    res.status(error.status || 500).json({ error: error.message || 'Server error deleting password' });
   }
 });
 
-// Health check endpoint for backend service
 app.get('/health', (req, res) => {
-  res.status(200).json({ 
+  res.json({ 
     status: 'healthy', 
     service: 'Prysm Password Manager API',
     version: '1.0.0',
@@ -299,7 +251,6 @@ app.get('/health', (req, res) => {
   });
 });
 
-// API routes info
 app.get('/', (req, res) => {
   res.json({ 
     message: 'Prysm Password Manager API',
