@@ -1,6 +1,7 @@
 # Deploying Prysm to Render
 
 ## Prerequisites
+
 - GitHub account
 - Render account (free tier available at render.com)
 - MongoDB Atlas account (free tier available at mongodb.com)
@@ -16,6 +17,7 @@
 ## Step 2: Push Code to GitHub
 
 1. Initialize git repository (if not already done):
+
    ```bash
    git init
    git add .
@@ -40,6 +42,7 @@
 3. Connect your GitHub repository
 4. Render will detect `render.yaml` automatically
 5. Set the following environment variables for the backend:
+
    - `MONGODB_URI`: Your MongoDB Atlas connection string
    - Other variables are auto-generated
 
@@ -48,6 +51,7 @@
 ### Option B: Manual Deployment (Deploy Services Separately)
 
 #### Deploy Backend:
+
 1. Click **"New +"** → **"Web Service"**
 2. Connect your GitHub repository
 3. Configure:
@@ -61,6 +65,7 @@
      - `PORT`: 10000
 
 #### Deploy Frontend:
+
 1. Click **"New +"** → **"Static Site"**
 2. Connect your GitHub repository
 3. Configure:
@@ -96,6 +101,7 @@ After deployment, if you encounter CORS issues, update the backend CORS settings
 ## Post-Deployment
 
 Your app is now live! Share your frontend URL with users. Remember:
+
 - First request after inactivity may be slow (free tier limitation)
 - Consider upgrading to paid tier for production use
 - Set up monitoring and alerts in Render dashboard
