@@ -25,9 +25,6 @@ app.use(express.json());
 const connectDB = async () => {
   try {
     const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/password-manager';
-    console.log('Attempting to connect to MongoDB...');
-    console.log('MongoDB URI:', mongoURI.replace(/\/\/.*@/, '//***:***@'));
-    
     await mongoose.connect(mongoURI);
     console.log('Connected to MongoDB successfully!');
   } catch (error) {
@@ -193,7 +190,6 @@ app.post('/api/passwords', async (req, res) => {
       password: decryptPassword(savedPassword.password, masterKey)
     });
   } catch (error) {
-    console.error('Error in POST /api/passwords:', error);
     res.status(error.status || 500).json({ error: error.message });
   }
 });
@@ -218,7 +214,6 @@ app.put('/api/passwords/:id', async (req, res) => {
       password: password ? 'Password updated' : decryptPassword(passwordToUpdate.password, masterKey)
     });
   } catch (error) {
-    console.error('Error in PUT /api/passwords/:id:', error);
     res.status(error.status || 500).json({ error: error.message || 'Server error updating password' });
   }
 });
@@ -237,7 +232,6 @@ app.delete('/api/passwords/:id', async (req, res) => {
     
     res.json({ message: 'Password deleted successfully' });
   } catch (error) {
-    console.error('Error in DELETE /api/passwords/:id:', error);
     res.status(error.status || 500).json({ error: error.message || 'Server error deleting password' });
   }
 });
@@ -248,18 +242,6 @@ app.get('/health', (req, res) => {
     service: 'Prysm Password Manager API',
     version: '1.0.0',
     timestamp: new Date().toISOString()
-  });
-});
-
-app.get('/', (req, res) => {
-  res.json({ 
-    message: 'Prysm Password Manager API',
-    version: '1.0.0',
-    endpoints: {
-      health: '/health',
-      masterKey: '/api/master-key',
-      passwords: '/api/passwords'
-    }
   });
 });
 

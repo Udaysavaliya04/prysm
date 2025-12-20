@@ -68,7 +68,7 @@ const MasterKeySetup: React.FC<MasterKeySetupProps> = ({ onMasterKeySet }) => {
             Set Your Master Key
           </h2>
           <p className="gradient-text-secondary">
-            This key will encrypt and decrypt all your passwords. Keep it safe!
+            This key will encrypt and decrypt all your passwords, So Keep it safe!
           </p>
         </div>
 
@@ -237,7 +237,6 @@ const MasterKeySetup: React.FC<MasterKeySetupProps> = ({ onMasterKeySet }) => {
           <li>Your master key is never stored on our servers</li>
           <li>If you forget it, you cannot recover your passwords</li>
           <li>Use a strong, memorable password</li>
-          <li>Consider using a password manager to store this key</li>
         </ul>
       </div>
       </div>
