@@ -35,31 +35,6 @@ https://github.com/user-attachments/assets/5431d3d2-7454-4244-87ba-508a8c2d3e7a
 - **Mongoose**
 - **Crypto**
 
-## Project Structure
-
-```
-prysm/
-├── backend/
-│   ├── server.js                             
-├── frontend/
-│   ├── public/
-│   │   ├── index.html          
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── HomePage.tsx          
-│   │   │   ├── MasterKeySetup.tsx    
-│   │   │   ├── MasterKeyLogin.tsx    
-│   │   │   ├── MasterKeyInput.tsx    
-│   │   │   ├── PasswordForm.tsx      
-│   │   │   └── PasswordList.tsx     
-│   │   ├── types/
-│   │   │   └── index.ts      
-│   │   ├── App.tsx         
-│   │   ├── index.tsx         
-│   │   └── index.css            
-└── README.md               
-```
-
 ## Security Features
 
 ### Encryption
