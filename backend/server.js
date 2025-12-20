@@ -236,7 +236,7 @@ app.delete('/api/passwords/:id', async (req, res) => {
   }
 });
 
-app.get('/health', (req, res) => {
+app.get('/api/health', (req, res) => {
   res.json({ 
     status: 'healthy', 
     service: 'Prysm Password Manager API',

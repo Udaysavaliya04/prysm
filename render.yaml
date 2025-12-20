@@ -1,0 +1,46 @@
+services:
+  # Backend API Service
+  - type: web
+    name: prysm-backend
+    runtime: node
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        sync: false
+      - key: ENCRYPTION_KEY
+        generateValue: true
+      - key: FRONTEND_URL
+        fromService:
+          type: web
+          name: prysm-frontend
+          property: host
+
+  # Frontend Static Site
+  - type: web
+    name: prysm-frontend
+    runtime: static
+    buildCommand: cd frontend && npm install && REACT_APP_API_URL=$BACKEND_URL npm run build
+    staticPublishPath: ./frontend/build
+    pullRequestPreviewsEnabled: true
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+    envVars:
+      - key: REACT_APP_API_URL
+        fromService:
+          type: web
+          name: prysm-backend
+          property: host
