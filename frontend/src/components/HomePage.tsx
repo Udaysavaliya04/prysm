@@ -67,10 +67,10 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
             </h1>
             <h2
               className="animate-on-scroll delay-1 gradient-text-secondary homepage-hero-subtitle"
-              style={{ paddingBottom: "30px", letterSpacing: "-0.05em" }}
+              style={{ paddingBottom: "30px", letterSpacing: "-0.05em" , fontSize: "2rem"}}
             >
-              Security so good, even you'll forget your password
-              <br></br>But we won't.
+              Security so good,  
+              <br></br>you'll never have to  remember a password again.
             </h2>
             <div className="hero-buttons animate-on-scroll delay-2">
               <button onClick={onSignUp} className="hero-btn hero-btn-primary">
