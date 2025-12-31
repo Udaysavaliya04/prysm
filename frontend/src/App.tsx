@@ -207,16 +207,11 @@ function App(): JSX.Element {
               className="master-key-display"
               style={{
                 padding: "12px",
-                background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(233,236,239,0.02) 25%, rgba(222,226,230,0.01) 50%, rgba(173,181,189,0.02) 75%, rgba(134,142,150,0.03) 100%)",
                 backdropFilter: "blur(10px)",
-                border: "1px solid rgba(255,255,255,0.1)",
-                borderRadius: "12px",
+                letterSpacing: '+0.05 em',
                 fontFamily: "monospace",
-                fontSize: "14px",
-                color: "var(--text-primary)",
-                wordBreak: "break-all",
-                minHeight: "20px",
+                borderRadius: "12px",
+                fontSize: "15px",
               }}
             >
               {masterKey}
@@ -228,14 +223,13 @@ function App(): JSX.Element {
             </p>
           </div>
 
-          <button className="add-btn" onClick={() => setShowForm(true)}>
+          <button className="hero-btn hero-btn-primary" style={{marginBottom: "32px" }} onClick={() => setShowForm(true)}>
             <svg
-              width="16"
-              height="16"
+              width="18"
+              height="18"
               viewBox="0 0 24 24"
-              fill="none"
               stroke="currentColor"
-              strokeWidth="2"
+              strokeWidth="4"
               strokeLinecap="round"
               strokeLinejoin="round"
               style={{ marginRight: "8px" }}

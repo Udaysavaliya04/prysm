@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Familjen+Grotesk:wght@400;700&display=swap');
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Familjen Grotesk','DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: 'Inter', 'Familjen Grotesk','DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   box-sizing: border-box;
 }
 
@@ -51,14 +51,7 @@ html {
 
 /* Gradient text utility classes */
 .gradient-text-primary {
-  background: linear-gradient(180deg,
-      #ffffff 0%,
-      #ffffff 20%,
-      #f8fafc 35%,
-      #ffdf9f 50%,
-      #94c3fe 65%,
-      #94a3b8 80%,
-      #64748b 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #ffffffff 25%, #ffffffff 50%, #7bd1ffff 75%, #00b3ffff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -238,25 +231,13 @@ html {
   transition: all 0.2s ease-out;
 }
 
-.master-key-container .form-group input::placeholder {
-  transition: opacity 0.2s ease-out;
-}
-
 .master-key-container .form-group input:hover {
   border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
 .master-key-container .form-group input:focus {
-  background: rgba(255, 255, 255, 0.12) !important;
-  backdrop-filter: blur(20px) saturate(1.8) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(2) !important;
-  transform: translateY(0);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
-  border-color: rgba(59, 130, 246, 0.5) !important;
-}
-
-.master-key-container .form-group input:focus::placeholder {
-  opacity: 0.5;
+  border-color: rgb(94, 156, 255) !important;
 }
 
 .homepage-security-section {
@@ -326,7 +307,7 @@ html {
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
   --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.1);
-  --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  --gradient-primary: linear-gradient(0deg, #3b82f6 0%, #1859ff 100%);
   --gradient-card: linear-gradient(135deg, rgba(22, 22, 22, 0.8) 0%, rgba(26, 26, 26, 0.6) 100%);
 }
 
@@ -335,9 +316,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--bg-primary);
-  background-image:
-    radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
@@ -570,12 +548,11 @@ code {
   width: 100%;
   padding: 16px 20px;
   border: 2px solid var(--border-color);
-  border-radius: 14px;
+  border-radius: 16px;
   font-size: 16px;
   background: var(--bg-tertiary);
   color: var(--text-primary);
-  font-family: 'Inter', sans-serif;
-  transition: all 0.2s ease-out;
+  transition: all 0.6s ease-in-out;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -771,46 +748,6 @@ code {
   font-size: 18px;
 }
 
-
-
-/* Add Button */
-.add-btn {
-  background: var(--accent-primary);
-  color: white;
-  border: none;
-  padding: 16px 32px;
-  border-radius: 14px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-bottom: 32px;
-  font-family: 'Inter', sans-serif;
-  letter-spacing: 0.025em;
-  position: relative;
-  overflow: hidden;
-}
-
-.add-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
-}
-
-.add-btn:hover::before {
-  left: 100%;
-}
-
-.add-btn:hover {
-  background: var(--accent-secondary);
-  transform: translateY(-1px);
-}
-
 /* Search Bar */
 .search-bar {
   margin-bottom: 32px;
@@ -820,12 +757,11 @@ code {
   width: 100%;
   padding: 16px 20px;
   border: 1px solid var(--border-color);
-  border-radius: 16px;
+  border-radius: 12px;
   font-size: 16px;
   background: var(--bg-tertiary);
   color: var(--text-primary);
-  font-family: 'Inter', sans-serif;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .search-bar input:focus {
@@ -1201,12 +1137,12 @@ code {
 .hero-btn-primary {
   background: var(--gradient-primary);
   color: white;
-  box-shadow: 0 2px 12px rgba(59, 130, 246, 0.15);
+  box-shadow: 0 2px 2px rgba(255, 255, 255, 0.316) inset;
 }
 
 .hero-btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.25);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.25) inset;
 }
 
 .hero-btn-primary:active {
@@ -1884,20 +1820,19 @@ code {
 
 
 .password-strength-meter {
-  height: 6px;
+  height: 4px;
   width: 100%;
   background-color: var(--bg-tertiary);
   border-radius: 6px;
-  margin-top: 8px;
+  margin-top: 6px;
   overflow: hidden;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .strength-bar {
   height: 100%;
   width: 0%;
   border-radius: 6px;
-  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease;
+  transition: width 5s cubic-bezier(0.4, 0, 0.2, 1), background-color 5s ease;
   position: relative;
   overflow: hidden;
 }
@@ -1910,7 +1845,7 @@ code {
   right: 0;
   bottom: 0;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  animation: shimmer 2s infinite;
+  animation: shimmer 6s infinite;
 }
 
 .strength-0 {

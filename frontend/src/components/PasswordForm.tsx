@@ -278,13 +278,13 @@ const PasswordForm: React.FC<PasswordFormProps> = ({ password, passwords, onSubm
               name="notes"
               value={formData.notes}
               onChange={handleChange}
-              placeholder="Additional notes or reminders"
+              placeholder="Additional notes or reminders..."
               rows={3}
             />
           </div>
 
           <div
-            style={{ display: "flex", gap: "10px", justifyContent: "flex-end" }}
+            style={{ display: "flex", gap: "10px", justifyContent: "flex-end", }}
           >
             <button type="button" onClick={onClose} className="btn">
               Cancel
