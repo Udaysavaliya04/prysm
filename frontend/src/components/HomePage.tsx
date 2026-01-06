@@ -61,25 +61,43 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
           <div className="hero-content">
             <h1
               className="animate-on-scroll gradient-text-primary homepage-hero-title"
-              style={{ paddingBottom: "5px", letterSpacing: "-0.08em" ,
-                fontSize: "5.5rem",
-                  background: "linear-gradient(180deg, #ffffff 0%, #ffffffff 25%, #ffffffff 50%, #7bd1ffff 75%, #007bffff 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  display: "block",
-                  fontWeight: "900",
-                  fontFamily: 'Familjen Grotesk',
-                  animation: "gradientShift 1s ease-in-out infinite",
-                  WebkitFontSmoothing: "antialiased",
-                  MozOsxFontSmoothing: "grayscale"
-                }}
+              style={{
+              paddingBottom: "5px",
+              letterSpacing: "-0.08em",
+              fontSize: "5.9rem",
+              fontWeight: "900",
+              WebkitFontSmoothing: "antialiased",
+              MozOsxFontSmoothing: "grayscale",
+              }}
             >
-              <span>Password and Access</span> <span>Management For Everyone.</span>
+              <span
+              style={{
+                background: "linear-gradient(180deg, #ffffff 0%, #ffffffff 25%, #ffffffff 50%, #7bd1ffff 75%, #007bffff 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                display: "inline-block",
+                fontFamily: 'Familjen Grotesk',
+              }}
+              >
+              Password and Access
+              </span>{" "}
+              <span
+              style={{
+                background: "linear-gradient(180deg, #ffffff 0%, #ffffffff 25%, #ffffffff 50%, #7bd1ffff 75%, #007bffff 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                display: "inline-block",
+                fontFamily: 'Familjen Grotesk',
+              }}
+              >
+              Management For Everyone.
+              </span>
             </h1>
             <h2
               className="animate-on-scroll delay-1 gradient-text-secondary homepage-hero-subtitle"
-              style={{ paddingBottom: "30px", letterSpacing: "-0.05em" , fontSize: "2rem"}}
+              style={{ paddingBottom: "30px", letterSpacing: "-0.05em" , fontSize: "1.7rem"}}
             >
               Security so good,  
               <br></br>you'll never have to  remember a password again.
