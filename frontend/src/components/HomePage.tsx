@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
 interface HomePageProps {
   onLogin: () => void;
@@ -6,22 +6,24 @@ interface HomePageProps {
 }
 
 const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      rootMargin: "0px 0px -50px 0px",
     };
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
+          entry.target.classList.add("animate-in");
         }
       });
     }, observerOptions);
 
-    const animateElements = document.querySelectorAll('.animate-on-scroll');
-    animateElements.forEach(el => observer.observe(el));
+    const animateElements = document.querySelectorAll(".animate-on-scroll");
+    animateElements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);
@@ -52,7 +54,52 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
               Sign Up
             </button>
           </div>
+
+          <button
+            className="mobile-menu-btn"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? "✕" : "☰"}
+          </button>
         </div>
+
+        {isMobileMenuOpen && (
+          <div className="mobile-menu">
+            <a
+              href="#features"
+              className="nav-link"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Features
+            </a>
+            <a
+              href="#security"
+              className="nav-link"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Security
+            </a>
+            <button
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                onLogin();
+              }}
+              className="nav-btn-secondary"
+            >
+              Log In
+            </button>
+            <button
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                onSignUp();
+              }}
+              className="nav-btn-primary"
+            >
+              Sign Up
+            </button>
+          </div>
+        )}
       </nav>
 
       {/* Hero */}
@@ -62,45 +109,50 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
             <h1
               className="animate-on-scroll gradient-text-primary homepage-hero-title"
               style={{
-              paddingBottom: "5px",
-              letterSpacing: "-0.08em",
-              fontSize: "5.9rem",
-              fontWeight: "900",
-              WebkitFontSmoothing: "antialiased",
-              MozOsxFontSmoothing: "grayscale",
+                paddingBottom: "5px",
+                letterSpacing: "-0.08em",
+                fontWeight: "900",
+                WebkitFontSmoothing: "antialiased",
+                MozOsxFontSmoothing: "grayscale",
               }}
             >
               <span
-              style={{
-                background: "linear-gradient(180deg, #ffffff 0%, #ffffffff 25%, #ffffffff 50%, #7bd1ffff 75%, #007bffff 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                display: "inline-block",
-                fontFamily: 'Familjen Grotesk',
-              }}
+                style={{
+                  background:
+                    "linear-gradient(180deg, #ffffff 0%, #ffffffff 25%, #ffffffff 50%, #7bd1ffff 75%, #007bffff 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  display: "inline-block",
+                  fontFamily: "Familjen Grotesk",
+                }}
               >
-              Password and Access
+                Password and Access
               </span>{" "}
               <span
-              style={{
-                background: "linear-gradient(180deg, #ffffff 0%, #ffffffff 25%, #ffffffff 50%, #7bd1ffff 75%, #007bffff 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                display: "inline-block",
-                fontFamily: 'Familjen Grotesk',
-              }}
+                style={{
+                  background:
+                    "linear-gradient(180deg, #ffffff 0%, #ffffffff 25%, #ffffffff 50%, #7bd1ffff 75%, #007bffff 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  display: "inline-block",
+                  fontFamily: "Familjen Grotesk",
+                }}
               >
-              Management For Everyone.
+                Management For Everyone.
               </span>
             </h1>
             <h2
               className="animate-on-scroll delay-1 gradient-text-secondary homepage-hero-subtitle"
-              style={{ paddingBottom: "30px", letterSpacing: "-0.05em" , fontSize: "1.7rem"}}
+              style={{
+                paddingBottom: "30px",
+                letterSpacing: "-0.05em",
+                fontSize: "1.7rem",
+              }}
             >
-              Security so good,  
-              <br></br>you'll never have to  remember a password again.
+              Security so good,
+              <br></br>you'll never have to remember a password again.
             </h2>
             <div className="hero-buttons animate-on-scroll delay-2">
               <button onClick={onSignUp} className="hero-btn hero-btn-primary">
@@ -416,4 +468,4 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
   );
 };
 
-export default HomePage; 
+export default HomePage;

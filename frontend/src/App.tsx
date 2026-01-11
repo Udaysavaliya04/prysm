@@ -131,7 +131,7 @@ function App(): JSX.Element {
             <div className="nav-logo">
               <img src="/prysm-logo.png" alt="Prysm Logo" style={{ height: '47px', width: 'auto', marginRight: '12px' }} />
             </div>
-            <div className="nav-links">
+            <div className="nav-links mobile-visible">
               <button onClick={handleLogout} className="nav-link" >← Back to Home</button>
             </div>
           </div>
