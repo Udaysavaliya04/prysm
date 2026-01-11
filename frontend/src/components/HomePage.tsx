@@ -460,7 +460,31 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
       <footer className="homepage-footer">
         <div className="container homepage-footer-container">
           <p className="homepage-footer-text">
-            Made with ❤️ + AES-256 by Uday Savaliya.
+            Made with ❤️ + AES-256 by{" "}
+            <a
+              href="https://github.com/Udaysavaliya04"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: "inherit",
+                textDecoration: "none",
+                fontWeight: "500",
+                transition: "opacity 0.2s ease, border-bottom 0.2s ease",
+                borderBottom: "1px solid transparent",
+                cursor: "pointer",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.opacity = "0.8";
+                e.currentTarget.style.borderBottomColor = "currentColor";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.opacity = "1";
+                e.currentTarget.style.borderBottomColor = "transparent";
+              }}
+            >
+              Uday Savaliya
+            </a>
+            .
           </p>
         </div>
       </footer>
