@@ -125,6 +125,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
                   backgroundClip: "text",
                   display: "inline-block",
                   fontFamily: "Familjen Grotesk",
+                  letterSpacing: "-0.05em",
                 }}
               >
                 Password and Access
@@ -138,6 +139,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
                   backgroundClip: "text",
                   display: "inline-block",
                   fontFamily: "Familjen Grotesk",
+                  letterSpacing: "-0.07em",
                 }}
               >
                 Management For Everyone.
@@ -434,20 +436,45 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
               className="animate-on-scroll gradient-text-primary"
               style={{ paddingBottom: "5px", letterSpacing: "-0.08em" }}
             >
-              Sleep easy. <br></br>Prysm's got your back.
+              <span
+                style={{
+                  background:
+                    "linear-gradient(180deg, #ffffff 0%, #ffffffff 25%, #ffffffff 50%, #7bd1ffff 75%, #007bffff 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  display: "inline-block",
+                  fontFamily: "Familjen Grotesk",
+                }}
+              >
+                Sleep Easy
+              </span>{" "}
+              <span
+                style={{
+                  background:
+                    "linear-gradient(180deg, #ffffff 0%, #ffffffff 25%, #ffffffff 50%, #7bd1ffff 75%, #007bffff 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  display: "inline-block",
+                  fontFamily: "Familjen Grotesk",
+                }}
+              >
+                Prysm's got your back.
+              </span>
             </h1>
             <p
               className="animate-on-scroll delay-1"
               style={{
                 color: "var(--text-secondary)",
-                opacity: "1",
-                fontFamily: "'Fira Code', 'Inter'",
-                letterSpacing: "-0.05em",
+                fontFamily: 'Familjen Grotesk,"Fira Code", "Inter"',
+                letterSpacing: "-0.02em",
                 fontWeight: "500",
+                fontSize: "1.5rem",
               }}
             >
               Join thousands of users who trust Prysm with their sensitive data.
-              Get started in seconds, no registration required.
+              <br></br>Get started in seconds, no registration required.
             </p>
             <div className="hero-buttons animate-on-scroll delay-2">
               <button onClick={onSignUp} className="hero-btn hero-btn-primary">
@@ -459,33 +486,44 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
       </section>
       <footer className="homepage-footer">
         <div className="container homepage-footer-container">
-          <p className="homepage-footer-text">
-            Made with ❤️ + AES-256 by{" "}
-            <a
-              href="https://github.com/Udaysavaliya04"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                color: "inherit",
-                textDecoration: "none",
-                fontWeight: "500",
-                transition: "opacity 0.2s ease, border-bottom 0.2s ease",
-                borderBottom: "1px solid transparent",
-                cursor: "pointer",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.opacity = "0.8";
-                e.currentTarget.style.borderBottomColor = "currentColor";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.opacity = "1";
-                e.currentTarget.style.borderBottomColor = "transparent";
-              }}
-            >
-              Uday Savaliya
-            </a>
-            .
-          </p>
+            <p className="homepage-footer-text" >
+              Made with{" "}
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="red"
+                color="red"
+                style={{ display: "inline-block", margin: "0 4px", verticalAlign: "middle" }}
+              >
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+              + AES-256 by{" "}
+              <a
+                href="https://github.com/Udaysavaliya04"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "inherit",
+                  textDecoration: "none",
+                  fontWeight: "500",
+                  transition: "opacity 0.2s ease, border-bottom 0.2s ease",
+                  borderBottom: "1px solid transparent",
+                  cursor: "pointer",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.opacity = "0.8";
+                  e.currentTarget.style.borderBottomColor = "currentColor";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.opacity = "1";
+                  e.currentTarget.style.borderBottomColor = "transparent";
+                }}
+              >
+                Uday Savaliya
+              </a>
+              .
+            </p>
         </div>
       </footer>
     </div>
