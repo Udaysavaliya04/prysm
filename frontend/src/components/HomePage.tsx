@@ -125,7 +125,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
                   backgroundClip: "text",
                   display: "inline-block",
                   fontFamily: "Familjen Grotesk",
-                  letterSpacing: "-0.05em",
+                  letterSpacing: "-0.08em",
                 }}
               >
                 Password and Access
