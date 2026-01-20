@@ -124,8 +124,8 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
                   display: "inline-block",
-                  fontFamily: "Familjen Grotesk",
-                  letterSpacing: "-0.08em",
+                  fontFamily: "'Familjen Grotesk",
+                  letterSpacing: "-0.06em",
                 }}
               >
                 Password and Access
@@ -174,7 +174,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
           <div className="header">
             <h1
               className="animate-on-scroll gradient-text-primary"
-              style={{ paddingBottom: "5px", letterSpacing: "-0.08em" }}
+              style={{ paddingBottom: "5px", letterSpacing: "-0.05em" }}
             >
               Take back control and secure what matters.
             </h1>
@@ -337,7 +337,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
           <div className="header">
             <h1
               className="animate-on-scroll gradient-text-primary"
-              style={{ paddingBottom: "5px", letterSpacing: "-0.08em" }}
+              style={{ paddingBottom: "5px", letterSpacing: "-0.05em" }}
             >
               Built for Security.
             </h1>
