@@ -11,7 +11,6 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
 }
 
 .page-container {
@@ -23,7 +22,7 @@ html {
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.6s ease-out;
+  transition: all 0.8s ease-in-out;
 }
 
 .animate-on-scroll.animate-in {
@@ -64,6 +63,16 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+.hero-gradient-text {
+  background: linear-gradient(180deg, #ffffff 0%, #ffffffff 25%, #ffffffff 50%, #7bd1ffff 75%, #007bffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .gradient-text-secondary {
@@ -226,21 +235,21 @@ html {
 
 .master-key-container .form-group input {
   background:transparent !important;
-  backdrop-filter: blur(30px) saturate(1) !important;
-  -webkit-backdrop-filter: blur(30px) saturate(1.5) !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  color: rgb(255, 255, 255) !important;
+  backdrop-filter: blur(30px) saturate(1);
+  -webkit-backdrop-filter: blur(30px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.181);
+  color: rgb(255, 255, 255);
   transition: all 0.4s ease-out;
   border-radius: 12px;
 }
 
 .master-key-container .form-group input:hover {
-  border-color: rgba(255, 255, 255, 0.4) !important;
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .master-key-container .form-group input:focus {
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
-  border-color: rgb(94, 156, 255) !important;
+  border-color: rgb(94, 156, 255);
   transition: all 0.4s ease-in-out;
 }
 
@@ -332,7 +341,7 @@ code {
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 3px;
 }
 
 ::-webkit-scrollbar-track {
@@ -1889,7 +1898,6 @@ code {
   }
 }
 
-
 .password-strength-meter {
   height: 4px;
   width: 100%;
@@ -1943,7 +1951,6 @@ code {
   width: 100%;
   background: linear-gradient(135deg, var(--accent-success), #059669);
 }
-
 
 .password-feedback {
   margin-top: 8px;

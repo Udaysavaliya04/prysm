@@ -117,13 +117,8 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
               }}
             >
               <span
+                className="hero-gradient-text"
                 style={{
-                  background:
-                    "linear-gradient(180deg, #ffffff 0%, #ffffffff 25%, #ffffffff 50%, #7bd1ffff 75%, #007bffff 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  display: "inline-block",
                   fontFamily: "'Familjen Grotesk",
                   letterSpacing: "-0.06em",
                 }}
@@ -131,13 +126,8 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
                 Password and Access
               </span>{" "}
               <span
+                className="hero-gradient-text"
                 style={{
-                  background:
-                    "linear-gradient(180deg, #ffffff 0%, #ffffffff 25%, #ffffffff 50%, #7bd1ffff 75%, #007bffff 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  display: "inline-block",
                   fontFamily: "Familjen Grotesk",
                   letterSpacing: "-0.07em",
                 }}
@@ -146,7 +136,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
               </span>
             </h1>
             <h2
-              className="animate-on-scroll delay-1 gradient-text-secondary homepage-hero-subtitle"
+              className="animate-on-scroll gradient-text-secondary homepage-hero-subtitle"
               style={{
                 paddingBottom: "30px",
                 letterSpacing: "-0.05em",
@@ -173,7 +163,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
         <div className="container">
           <div className="header">
             <h1
-              className="animate-on-scroll gradient-text-primary"
+              className="hero-gradient-text"
               style={{ paddingBottom: "5px", letterSpacing: "-0.05em" }}
             >
               Take back control and secure what matters.
@@ -437,26 +427,17 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
               style={{ paddingBottom: "5px", letterSpacing: "-0.08em" }}
             >
               <span
+                className="hero-gradient-text"
                 style={{
-                  background:
-                    "linear-gradient(180deg, #ffffff 0%, #ffffffff 25%, #ffffffff 50%, #7bd1ffff 75%, #007bffff 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  display: "inline-block",
                   fontFamily: "Familjen Grotesk",
                 }}
               >
                 Sleep Easy
               </span>{" "}
+              <br></br>
               <span
+                className="hero-gradient-text"
                 style={{
-                  background:
-                    "linear-gradient(180deg, #ffffff 0%, #ffffffff 25%, #ffffffff 50%, #7bd1ffff 75%, #007bffff 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  display: "inline-block",
                   fontFamily: "Familjen Grotesk",
                 }}
               >
