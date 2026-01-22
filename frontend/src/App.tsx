@@ -132,7 +132,10 @@ function App(): JSX.Element {
               <img src="/prysm-logo.png" alt="Prysm Logo" style={{ height: '47px', width: 'auto', marginRight: '12px' }} />
             </div>
             <div className="nav-links mobile-visible">
-              <button onClick={handleLogout} className="nav-link" >← Back to Home</button>
+              <button onClick={handleLogout} className="nav-link" ><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px', display: 'inline-block', verticalAlign: 'middle' }}>
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                  </svg></button>
             </div>
           </div>
         </nav>
@@ -156,7 +159,7 @@ function App(): JSX.Element {
               style={{ height: "47px", width: "auto", marginRight: "12px" }}
             />
           </div>
-          <div className="nav-links">
+          <div className="nav-links mobile-visible">
             <button
               onClick={handleLogout}
               className="hero-btn hero-btn-primary"

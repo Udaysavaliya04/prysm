@@ -271,7 +271,7 @@ const PasswordForm: React.FC<PasswordFormProps> = ({ password, passwords, onSubm
             />
           </div>
 
-          <div className="form-group">
+            <div className="form-group">
             <label htmlFor="notes">Notes</label>
             <textarea
               id="notes"
@@ -280,8 +280,9 @@ const PasswordForm: React.FC<PasswordFormProps> = ({ password, passwords, onSubm
               onChange={handleChange}
               placeholder="Additional notes or reminders..."
               rows={3}
+              style={{ resize: "none" }}
             />
-          </div>
+            </div>
 
           <div
             style={{ display: "flex", gap: "10px", justifyContent: "flex-end", }}
