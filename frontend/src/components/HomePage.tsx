@@ -35,7 +35,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
         <div className="nav-container homepage-nav-container">
           <div className="nav-logo">
             <img
-              src="/prysm-logo.png"
+              src="/new.png"
               alt="Prysm Logo"
               className="homepage-header-logo"
             />
