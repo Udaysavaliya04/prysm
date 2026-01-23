@@ -129,7 +129,7 @@ function App(): JSX.Element {
         <nav className="nav">
           <div className="nav-container">
             <div className="nav-logo">
-              <img src="/prysm-logo.png" alt="Prysm Logo" style={{ height: '47px', width: 'auto', marginRight: '12px' }} />
+              <img src="/new.png" alt="Prysm Logo" style={{ height: '47px', width: 'auto', marginRight: '12px' }} />
             </div>
             <div className="nav-links mobile-visible">
               <button onClick={handleLogout} className="nav-link" ><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px', display: 'inline-block', verticalAlign: 'middle' }}>
@@ -154,7 +154,7 @@ function App(): JSX.Element {
         <div className="nav-container">
           <div className="nav-logo">
             <img
-              src="/prysm-logo.png"
+              src="/new.png"
               alt="Prysm Logo"
               style={{ height: "47px", width: "auto", marginRight: "12px" }}
             />
