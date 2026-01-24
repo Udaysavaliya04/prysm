@@ -897,8 +897,8 @@ code {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-color);
   border-radius: 16px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1249,7 +1249,7 @@ code {
 }
 
 .feature-card {
-  background: rgba(255, 255, 255, 0.02);
+  background: transparent;
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 0.5px solid rgba(255, 255, 255, 0.08);
@@ -1260,7 +1260,7 @@ code {
   position: relative;
   overflow: hidden;
   box-shadow:
-    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 3px 0 rgba(0, 0, 0, 0.1) ,
     0 1px 2px -1px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
 }
@@ -1272,7 +1272,7 @@ code {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg,
+  background: linear-gradient(0deg,
       rgba(255, 255, 255, 0.02) 0%,
       transparent 50%,
       rgba(255, 255, 255, 0.01) 100%);
@@ -1289,9 +1289,9 @@ code {
   transform: translateY(-8px) scale(1.02);
   border-color: rgba(255, 255, 255, 0.12);
   box-shadow:
-    0 20px 40px 0 rgba(0, 0, 0, 0.15),
-    0 8px 16px -4px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+    0 20px 40px 0 rgba(0, 0, 0, 0.15) ,
+    0 8px 16px -4px rgba(0, 0, 0, 0.1) ,
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.08) inset;
 }
 
 .feature-icon {
