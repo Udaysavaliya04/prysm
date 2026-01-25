@@ -9,9 +9,7 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+
 
 .page-container {
   min-height: 100vh;
@@ -21,13 +19,18 @@ html {
 /* Homepage animations */
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-in-out;
+  transform: translateY(30px) scale(0.95);
+  filter: blur(20px);
+  will-change: opacity, transform, filter;
+  transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 1s cubic-bezier(0.2, 0.8, 0.2, 1),
+              filter 1s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .animate-on-scroll.animate-in {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  filter: blur(0);
 }
 
 .animate-on-scroll.delay-1 {
@@ -150,8 +153,9 @@ html {
 
 .homepage-footer {
   padding: 40px 0;
-  border-top: 1px solid var(--border-color);
-  backdrop-filter: blur(10px) saturate(1.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(30px) saturate(1.5);
+  -webkit-backdrop-filter: blur(30px) saturate(1.5);
 }
 
 .homepage-footer-container {
@@ -237,7 +241,7 @@ html {
   background:transparent !important;
   backdrop-filter: blur(30px) saturate(1);
   -webkit-backdrop-filter: blur(30px) saturate(1.5);
-  border: 1px solid rgba(255, 255, 255, 0.181);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: rgb(255, 255, 255);
   transition: all 0.4s ease-out;
   border-radius: 12px;
@@ -413,25 +417,25 @@ code {
   border-radius: 16px;
   padding: 40px 32px;
   margin-bottom: 24px;
-  transition: all 0.35s ease-out;
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
   overflow: hidden;
   box-shadow:
-    0 1px 3px 0 rgba(0, 0, 0, 0.1),
-    0 1px 2px -1px rgba(0, 0, 0, 0.1),
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
-  animation: appleFadeIn 0.6s ease-out 0.15s both;
+  animation: appleFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 }
 
 @keyframes appleFadeIn {
   0% {
     opacity: 0;
-    transform: scale(0.98);
+    transform: scale(0.96) translateY(20px);
   }
 
   100% {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) translateY(0);
   }
 }
 
@@ -651,8 +655,8 @@ code {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(20px) saturate(120%);
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(30px) saturate(120%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -663,7 +667,7 @@ code {
   background: transparent;
   margin: auto;
   padding: 24px 32px;
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   width: 90%;
   max-width: 550px;
   border-radius: 16px;

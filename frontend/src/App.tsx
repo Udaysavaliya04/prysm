@@ -8,6 +8,8 @@ import HomePage from './components/HomePage';
 import { Password, PasswordFormData } from './types';
 import { API_BASE_URL } from './config/api';
 
+import Lenis from 'lenis';
+
 function App(): JSX.Element {
   const [passwords, setPasswords] = useState<Password[]>([]);
   const [masterKey, setMasterKey] = useState<string>('');
@@ -16,6 +18,28 @@ function App(): JSX.Element {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [currentView, setCurrentView] = useState<'home' | 'setup' | 'login' | 'manager'>('home');
+
+  useEffect(() => {
+    // Initialize Lenis for smooth scrolling
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   const fetchPasswords = useCallback(async (): Promise<void> => {
     if (!masterKey) return;
