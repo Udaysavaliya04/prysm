@@ -194,7 +194,7 @@ function App(): JSX.Element {
             <img
               src="/new.png"
               alt="Prysm Logo"
-              style={{ height: "47px", width: "auto", marginRight: "12px" }}
+              style={{ height: "35px", width: "auto", marginRight: "12px" }}
             />
           </div>
           <div className="nav-links mobile-visible">
