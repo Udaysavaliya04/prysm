@@ -796,7 +796,105 @@ code {
   opacity: 0.7;
 }
 
-/* Add subtle animations */
+/* Mobile Menu Button - Liquid Glass Apple Style */
+.mobile-menu-btn {
+  display: none; /* Default hidden on desktop */
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: transparent;
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(43, 43, 43, 0.249);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  z-index: 1001;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Liquid reflection effect */
+.mobile-menu-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(105, 105, 105, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.mobile-menu-btn:hover::before {
+  left: 100%;
+}
+
+.mobile-menu-btn:active {
+  transform: scale(0.95);
+}
+
+/* Hamburger Icon Animation */
+.menu-icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-line {
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background-color: var(--text-primary);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-line.top {
+  transform: translateY(-6px);
+}
+
+.menu-line.bottom {
+  transform: translateY(6px);
+}
+
+.mobile-menu-btn.open .menu-line.middle {
+  transform: scaleX(0);
+  opacity: 0;
+}
+
+.mobile-menu-btn.open .menu-line.top {
+  transform: rotate(45deg);
+}
+
+.mobile-menu-btn.open .menu-line.bottom {
+  transform: rotate(-45deg);
+}
+
+/* Media Query to show button on mobile */
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: flex;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -1394,6 +1492,10 @@ code {
     padding: 0 16px;
   }
 
+  .nav-container {
+    width: 93%;
+  }
+
   .header {
     padding: 60px 0 40px;
   }
@@ -1424,49 +1526,9 @@ code {
     display: flex;
   }
 
-  .mobile-menu-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    background: transparent;
-    border: none;
-    color: var(--text-primary);
-    cursor: pointer;
-    padding: 0;
-    z-index: 101;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 12px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .mobile-menu-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    transition: left 0.3s ease;
-    z-index: -1;
-  }
-
-  .mobile-menu-btn:hover::before {
-    left: 0;
-  }
-
-  .mobile-menu-btn svg {
-    width: 30px;
-    height: 30px;
-    stroke: currentColor;
-    stroke-width: 2;
-  
-  }
-
   .mobile-menu {
+    width: 93%;
+    margin: 0 auto;
     position: fixed;
     top: 80px; /* Below navbar */
     left: 0;
@@ -1521,14 +1583,13 @@ code {
   }
 }
 
-/* Desktop Styles for Mobile Elements */
 @media (min-width: 769px) {
   .mobile-menu-btn {
-    display: none; /* Hide hamburger on desktop */
+    display: none;
   }
   
   .mobile-menu {
-    display: none; /* Ensure menu is hidden on desktop */
+    display: none;
   }
 }
 

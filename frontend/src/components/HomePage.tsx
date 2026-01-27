@@ -56,11 +56,15 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin, onSignUp }) => {
           </div>
 
           <button
-            className="mobile-menu-btn"
+            className={`mobile-menu-btn ${isMobileMenuOpen ? 'open' : ''}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? "✕" : "☰"}
+            <div className="menu-icon">
+              <span className="menu-line top"></span>
+              <span className="menu-line middle"></span>
+              <span className="menu-line bottom"></span>
+            </div>
           </button>
         </div>
 
