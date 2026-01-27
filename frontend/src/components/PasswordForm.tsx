@@ -160,7 +160,7 @@ const PasswordForm: React.FC<PasswordFormProps> = ({ password, passwords, onSubm
 
           <div className="form-group">
             <label htmlFor="password">Password *</label>
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <div className="password-gen-row">
               <div style={{ flex: 1 }}>
                 <div className="password-input-container">
                   <input
