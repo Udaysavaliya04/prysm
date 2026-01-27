@@ -995,7 +995,7 @@ code {
 .nav-btn-secondary {
   background: transparent;
   color: var(--text-primary);
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-color);
   gap: 6px;
   padding: 12px 24px;
   border-radius: 12px;
@@ -1008,6 +1008,7 @@ code {
   position: relative;
   overflow: hidden;
   animation: fadeIn 0.8s ease-out 0.5s backwards;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1), inset 0 -1px 2px 0 rgba(0, 0, 0, 0.3);
 }
 
 .nav-btn-secondary::before {
@@ -1028,7 +1029,7 @@ code {
 .nav-btn-secondary:hover {
   border-color: var(--border-hover);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1), inset 0 -1px 2px 0 rgba(0, 0, 0, 0.3);
 }
 
 /* Hero Section */
@@ -1424,14 +1425,45 @@ code {
   }
 
   .mobile-menu-btn {
-    display: block; /* Show hamburger button on mobile */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
     background: transparent;
     border: none;
     color: var(--text-primary);
-    font-size: 24px;
     cursor: pointer;
-    padding: 8px;
+    padding: 0;
     z-index: 101;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mobile-menu-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    transition: left 0.3s ease;
+    z-index: -1;
+  }
+
+  .mobile-menu-btn:hover::before {
+    left: 0;
+  }
+
+  .mobile-menu-btn svg {
+    width: 30px;
+    height: 30px;
+    stroke: currentColor;
+    stroke-width: 2;
+  
   }
 
   .mobile-menu {
