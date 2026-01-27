@@ -194,7 +194,7 @@ function App(): JSX.Element {
             <img
               src="/new.png"
               alt="Prysm Logo"
-              style={{ height: "35px", width: "auto", marginRight: "12px" }}
+              style={{ height: "30px", width: "auto", marginRight: "12px" }}
             />
           </div>
           <div className="nav-links mobile-visible">
@@ -221,27 +221,6 @@ function App(): JSX.Element {
                 backgroundClip: "text",
               }}
             >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                style={{
-                  display: "inline-block",
-                  marginRight: "8px",
-                  verticalAlign: "middle",
-                }}
-              >
-                <path d="M15 7h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3"></path>
-                <path d="M10 12h4"></path>
-                <path d="M10 16h4"></path>
-                <path d="M10 8h4"></path>
-                <path d="M7 7v10"></path>
-              </svg>
               Master Key
             </h3>
             <div
