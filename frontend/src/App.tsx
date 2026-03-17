@@ -165,9 +165,9 @@ function App(): JSX.Element {
     return (
       <div className="page-container">
         <nav className="nav">
-          <div className="nav-container">
+          <div className="nav-container" style={{height: '70.4px'}}>
             <div className="nav-logo">
-              <img src="/new.png" alt="Prysm Logo" style={{ height: '47px', width: 'auto', marginRight: '12px' }} />
+              <img src="/new.png" alt="Prysm Logo" style={{ height: '40px', width: 'auto', marginRight: '12px' }} />
             </div>
             <div className="nav-links mobile-visible">
               <button onClick={handleLogout} className="nav-link" ><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px', display: 'inline-block', verticalAlign: 'middle' }}>
@@ -268,6 +268,7 @@ function App(): JSX.Element {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setSearchTerm(e.target.value)
               }
+              className="input-control"
             />
           </div>
 

@@ -138,6 +138,7 @@ const PasswordForm: React.FC<PasswordFormProps> = ({ password, passwords, onSubm
                 value={formData.title}
                 onChange={handleChange}
                 placeholder="e.g., Gmail, Facebook"
+                className="input-control"
               />
               {errors.title && <p className="error-message">{errors.title}</p>}
             </div>
@@ -151,6 +152,7 @@ const PasswordForm: React.FC<PasswordFormProps> = ({ password, passwords, onSubm
                 value={formData.username}
                 onChange={handleChange}
                 placeholder="Enter username or email"
+                className="input-control"
               />
               {errors.username && (
                 <p className="error-message">{errors.username}</p>
@@ -170,6 +172,7 @@ const PasswordForm: React.FC<PasswordFormProps> = ({ password, passwords, onSubm
                     value={formData.password}
                     onChange={handleChange}
                     placeholder="Enter password"
+                    className="input-control"
                   />
                   <button
                     type="button"
@@ -268,6 +271,7 @@ const PasswordForm: React.FC<PasswordFormProps> = ({ password, passwords, onSubm
               value={formData.url}
               onChange={handleChange}
               placeholder="https://example.com"
+              className="input-control"
             />
           </div>
 
@@ -280,14 +284,15 @@ const PasswordForm: React.FC<PasswordFormProps> = ({ password, passwords, onSubm
               onChange={handleChange}
               placeholder="Additional notes or reminders..."
               rows={3}
-              style={{ resize: "none" }}
+              style={{ resize: "vertical" }}
+              className="input-control"
             />
             </div>
 
           <div
             style={{ display: "flex", gap: "10px", justifyContent: "flex-end", }}
           >
-            <button type="button" onClick={onClose} className="btn">
+            <button type="button" onClick={onClose} className="hero-btn hero-btn-secondary">
               Cancel
             </button>
             <button type="submit" className="hero-btn hero-btn-primary">

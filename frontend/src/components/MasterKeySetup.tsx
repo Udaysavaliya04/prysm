@@ -58,9 +58,9 @@ const MasterKeySetup: React.FC<MasterKeySetupProps> = ({ onMasterKeySet }) => {
               src="/key.svg"
               alt="key"
               style={{
-                height: "32px",
+                height: "24px",
                 width: "auto",
-                marginRight: "12px",
+                marginRight: "10px",
                 verticalAlign: "middle",
                 display: "inline-block"
               }}
@@ -85,6 +85,7 @@ const MasterKeySetup: React.FC<MasterKeySetupProps> = ({ onMasterKeySet }) => {
                 }
                 placeholder="Enter your master key (min 8 characters)"
                 required
+                className="input-control"
               />
 
               <button
@@ -138,6 +139,7 @@ const MasterKeySetup: React.FC<MasterKeySetupProps> = ({ onMasterKeySet }) => {
                 }
                 placeholder="Confirm your master key"
                 required
+                className="input-control"
               />
               <button
                 type="button"

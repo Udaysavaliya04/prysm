@@ -50,9 +50,9 @@ const MasterKeyLogin: React.FC<MasterKeyLoginProps> = ({ onMasterKeySet }) => {
               src="/key.svg"
               alt="key"
               style={{
-                height: "32px",
+                height: "24px",
                 width: "auto",
-                marginRight: "12px",
+                marginRight: "10px",
                 verticalAlign: "middle",
                 display: "inline-block"
               }}
@@ -77,6 +77,7 @@ const MasterKeyLogin: React.FC<MasterKeyLoginProps> = ({ onMasterKeySet }) => {
                 }
                 placeholder="Enter your master key"
                 required
+                className="input-control"
               />
               <button
                 type="button"
