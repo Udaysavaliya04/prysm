@@ -96,7 +96,7 @@
 
 /* Homepage specific styles */
 .homepage-container {
-  background-image: url('./assets/bg3.jpeg');
+  background-image: url('./assets/bg.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -113,8 +113,8 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(0.045em) saturate(1.5);
-  -webkit-backdrop-filter: blur(0.025em) saturate(1.5);
+  backdrop-filter: blur(0.045em);
+  -webkit-backdrop-filter: blur(0.025em);
   z-index: 1;
 }
 
@@ -151,8 +151,8 @@
 .homepage-footer {
   padding: 40px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(30px) saturate(1.5);
-  -webkit-backdrop-filter: blur(30px) saturate(1.5);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
 }
 
 .homepage-footer-container {
@@ -170,7 +170,7 @@
 
 /* Master Key pages background */
 .master-key-container {
-  background-image: url('./assets/bg3.jpeg');
+  background-image: url('./assets/bg.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -194,8 +194,8 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(0.045em) saturate(1.5);
-  -webkit-backdrop-filter: blur(0.025em) saturate(1.5);
+  backdrop-filter: blur(0.045em);
+  -webkit-backdrop-filter: blur(0.025em);
   z-index: 1;
 }
 
@@ -262,8 +262,8 @@
 
 .homepage-security-section {
   background: rgba(255, 255, 255, 0.008);
-  backdrop-filter: blur(60px) saturate(200%);
-  -webkit-backdrop-filter: blur(60px) saturate(200%);
+  backdrop-filter: blur(60px);
+  -webkit-backdrop-filter: blur(60px);
   border-top: 0.33px solid rgba(255, 255, 255, 0.06);
   border-bottom: 0.33px solid rgba(255, 255, 255, 0.06);
   position: relative;
@@ -1183,8 +1183,8 @@ code {
 .features {
   padding: 80px 0;
   background: rgba(255, 255, 255, 0.008);
-  backdrop-filter: blur(60px) saturate(200%);
-  -webkit-backdrop-filter: blur(60px) saturate(200%);
+  backdrop-filter: blur(60px);
+  -webkit-backdrop-filter: blur(60px);
   border-top: 0.33px solid rgba(255, 255, 255, 0.06);
   border-bottom: 0.33px solid rgba(255, 255, 255, 0.06);
   position: relative;
